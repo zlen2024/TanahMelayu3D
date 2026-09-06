@@ -2,6 +2,51 @@
 
 Append-only. One entry per pass. Greppable: `grep "^## \[" log.md`.
 
+## [2026-09-06] design | Tanah Melayu (Zaman Melaka) plan filed under wiki/design/
+
+**Trigger**: user supplied a full design brief — Melaka-era setting, 4 classes,
+Lv1-20 bestiary — and asked for it in the wiki marked as plan, plus a critique.
+
+Added a **fourth layer** to the wiki: `wiki/design/` for proposals, kept
+strictly separate from `wiki/pages/` which documents what the game actually is.
+Every design page carries `STATUS: PLAN` in its title. The schema now states
+that a claim may not cross from design to pages without the code changing.
+
+8 pages: index, setting, one per class (Pendekar / Jagat / Pawang / Pemanah
+Rimba), bestiary, open-questions.
+
+### Gap analysis, grounded in the codebase rather than asserted
+
+The brief is strong on fantasy and silent on systems cost. Checked against what
+exists:
+
+- Four class-specific resources vs. one shared energy bar today.
+- Perfect parry, posture/stagger, stealth, DoT, knockdown, ground hazards,
+  grabs and weak points — **none exist**.
+- `Seru Bayang Mayat` (summon) collides directly with G4: monsters are
+  addressed by container index, so a runtime spawn shifts every later index and
+  lands damage on the wrong monster on other clients.
+- Backstab needs real facing; the `move` packet transmits only `flip`, so
+  backstab against players is not implementable today.
+- Time dilation for the archer's focus mode does not survive multiplayer;
+  proposed slowing the *player* instead of the world.
+- Computed the XP curve: Lv20 is **177,267 XP ~= 9,800 kills** at current
+  rates, so the "early game" is a grind. Retune needed.
+- Art direction reverses the current bright cartoon look, and the Pillow
+  generator cannot reach gritty dark fantasy — and a Malay setting has
+  essentially no off-the-shelf CC0 packs.
+
+Also raised, as a design constraint rather than a moral note: toyol, saka,
+santau and pawang practice are live folk belief, so the brief's existing
+instinct (*"bukan hamba pada iblis"*) is worth promoting to a written rule the
+team writes against.
+
+14 open questions recorded, each a real fork. Recommended doing stable monster
+IDs, a status-effect system, and data-driven monster definitions first — all
+three are needed regardless of how the design questions resolve.
+
+**No code was written this pass.**
+
 ## [2026-09-06] ingest | Animation, wading, cliffs, minimap terrain + zoom
 
 **Trigger**: user asked for character animation, water slowing by depth,

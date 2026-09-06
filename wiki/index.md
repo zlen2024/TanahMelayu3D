@@ -6,6 +6,14 @@ maintenance rules are in [CLAUDE.md](CLAUDE.md).
 **Project**: Godot 4.3 / GDScript web multiplayer RPG (WebAssembly client) +
 Node.js WebSocket server + SQLite.
 
+## Design (proposals, not implemented)
+
+`wiki/design/` holds the **Tanah Melayu (Zaman Melaka)** plan — setting, four
+classes, bestiary. None of it is built. Start at
+[design/index.md](design/index.md), and read
+[design/open-questions.md](design/open-questions.md) before committing to any
+of it.
+
 ## Start here
 
 | Page | What it covers |

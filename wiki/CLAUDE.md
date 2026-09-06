@@ -3,13 +3,19 @@
 Instructions for any LLM session maintaining this wiki. Read this before
 touching anything under `wiki/`.
 
-## Three layers
+## Four layers
 
 | Layer | Location | Who writes it |
 |---|---|---|
 | **Raw source** | `scripts/`, `server/`, `scenes/`, `tests/`, `tools/` | Humans + normal dev work. The wiki **never** edits it. |
 | **Graph** | `wiki/graph/` | `build_graph.py` only. Regenerable cache — **never hand-edit** `graph.json` or `symbol_index.md`. |
 | **Wiki** | `wiki/pages/`, `index.md`, `log.md` | Written by hand (by the LLM). The only layer carrying judgment. |
+| **Design** | `wiki/design/` | Proposals. **Not implemented.** |
+
+**`wiki/pages/` is what the game IS. `wiki/design/` is what it is MEANT TO
+BECOME.** Never let a claim cross from design to pages without the code
+changing first — the moment a proposal reads as fact, the whole wiki stops
+being trustworthy. Every design page carries `STATUS: PLAN` in its title.
 
 ## Why the graph layer is custom here
 
