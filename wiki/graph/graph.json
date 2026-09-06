@@ -1,0 +1,5135 @@
+{
+  "gdscript": [
+    {
+      "file": "scripts/classes/archer_class.gd",
+      "lang": "gdscript",
+      "class_name": "ArcherClass",
+      "extends": "HeroClass",
+      "funcs": [
+        {
+          "name": "_init",
+          "line": 4,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "execute_basic_attack",
+          "line": 11,
+          "args": "player: CharacterBody2D",
+          "returns": "void",
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "execute_charged_attack",
+          "line": 26,
+          "args": "player: CharacterBody2D",
+          "returns": "void",
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "execute_skill",
+          "line": 49,
+          "args": "player: CharacterBody2D, idx: int",
+          "returns": "bool",
+          "static": false,
+          "rpc": null
+        }
+      ],
+      "signals": [],
+      "consts": [
+        {
+          "name": "BASIC_SHOT_RANGE",
+          "line": 9
+        }
+      ],
+      "vars": [],
+      "enums": [],
+      "onready": [],
+      "rpcs": [],
+      "loads": [
+        {
+          "target": "res://scenes/projectile.tscn",
+          "line": 31
+        }
+      ],
+      "loc": 77
+    },
+    {
+      "file": "scripts/classes/hero_class.gd",
+      "lang": "gdscript",
+      "class_name": "HeroClass",
+      "extends": "RefCounted",
+      "funcs": [
+        {
+          "name": "get_class_name",
+          "line": 12,
+          "args": "",
+          "returns": "String",
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "acquire_target",
+          "line": 16,
+          "args": "player: CharacterBody2D",
+          "returns": "Node2D",
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "aim_dir",
+          "line": 30,
+          "args": "player: CharacterBody2D",
+          "returns": "Vector2",
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "execute_basic_attack",
+          "line": 37,
+          "args": "_player: CharacterBody2D",
+          "returns": "void",
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "execute_charged_attack",
+          "line": 40,
+          "args": "_player: CharacterBody2D",
+          "returns": "void",
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "execute_skill",
+          "line": 43,
+          "args": "_player: CharacterBody2D, _idx: int",
+          "returns": "bool",
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "create",
+          "line": 47,
+          "args": "class_type: String",
+          "returns": "HeroClass",
+          "static": true,
+          "rpc": null
+        }
+      ],
+      "signals": [],
+      "consts": [
+        {
+          "name": "AUTO_AIM_RANGE",
+          "line": 10
+        }
+      ],
+      "vars": [
+        {
+          "name": "class_name_str",
+          "line": 6
+        }
+      ],
+      "enums": [],
+      "onready": [],
+      "rpcs": [],
+      "loads": [
+        {
+          "target": "res://scripts/classes/mage_class.gd",
+          "line": 50
+        },
+        {
+          "target": "res://scripts/classes/archer_class.gd",
+          "line": 53
+        },
+        {
+          "target": "res://scripts/classes/warrior_class.gd",
+          "line": 56
+        }
+      ],
+      "loc": 57
+    },
+    {
+      "file": "scripts/classes/mage_class.gd",
+      "lang": "gdscript",
+      "class_name": "MageClass",
+      "extends": "HeroClass",
+      "funcs": [
+        {
+          "name": "_init",
+          "line": 4,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "execute_basic_attack",
+          "line": 10,
+          "args": "player: CharacterBody2D",
+          "returns": "void",
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "execute_charged_attack",
+          "line": 24,
+          "args": "player: CharacterBody2D",
+          "returns": "void",
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "execute_skill",
+          "line": 46,
+          "args": "player: CharacterBody2D, idx: int",
+          "returns": "bool",
+          "static": false,
+          "rpc": null
+        }
+      ],
+      "signals": [],
+      "consts": [
+        {
+          "name": "BASIC_BOLT_RANGE",
+          "line": 8
+        }
+      ],
+      "vars": [],
+      "enums": [],
+      "onready": [],
+      "rpcs": [],
+      "loads": [
+        {
+          "target": "res://scenes/projectile.tscn",
+          "line": 29
+        }
+      ],
+      "loc": 80
+    },
+    {
+      "file": "scripts/classes/warrior_class.gd",
+      "lang": "gdscript",
+      "class_name": "WarriorClass",
+      "extends": "HeroClass",
+      "funcs": [
+        {
+          "name": "_init",
+          "line": 7,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "execute_basic_attack",
+          "line": 10,
+          "args": "player: CharacterBody2D",
+          "returns": "void",
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "execute_charged_attack",
+          "line": 24,
+          "args": "player: CharacterBody2D",
+          "returns": "void",
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "execute_skill",
+          "line": 42,
+          "args": "player: CharacterBody2D, idx: int",
+          "returns": "bool",
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_deal_player_damage",
+          "line": 72,
+          "args": "player: CharacterBody2D, target: Node, base_dmg: int",
+          "returns": "void",
+          "static": false,
+          "rpc": null
+        }
+      ],
+      "signals": [],
+      "consts": [
+        {
+          "name": "FloatingText",
+          "line": 4
+        },
+        {
+          "name": "CombatFormula",
+          "line": 5
+        }
+      ],
+      "vars": [],
+      "enums": [],
+      "onready": [],
+      "rpcs": [],
+      "loads": [
+        {
+          "target": "res://scripts/ui/floating_text.gd",
+          "line": 4
+        },
+        {
+          "target": "res://scripts/combat/combat_formula.gd",
+          "line": 5
+        }
+      ],
+      "loc": 79
+    },
+    {
+      "file": "scripts/combat/combat_formula.gd",
+      "lang": "gdscript",
+      "class_name": "CombatFormula",
+      "extends": "RefCounted",
+      "funcs": [
+        {
+          "name": "calc_defense_mitigation",
+          "line": 12,
+          "args": "raw_damage: int, def_rating: int",
+          "returns": "int",
+          "static": true,
+          "rpc": null
+        },
+        {
+          "name": "calc_crit_chance",
+          "line": 23,
+          "args": "agi: int",
+          "returns": "float",
+          "static": true,
+          "rpc": null
+        },
+        {
+          "name": "is_critical_hit",
+          "line": 27,
+          "args": "agi: int",
+          "returns": "bool",
+          "static": true,
+          "rpc": null
+        },
+        {
+          "name": "calc_player_stats",
+          "line": 31,
+          "args": "hero_class: String, stat_str: int, stat_vit: int, stat_agi: int, stat_int: int, bonus_gear: Dictionary",
+          "returns": "Dictionary",
+          "static": true,
+          "rpc": null
+        },
+        {
+          "name": "calc_energy_regen",
+          "line": 73,
+          "args": "stat_int: int, bonus_mp_regen: int = 0",
+          "returns": "float",
+          "static": true,
+          "rpc": null
+        },
+        {
+          "name": "calc_health_regen",
+          "line": 76,
+          "args": "stat_vit: int, bonus_hp_regen: int = 0",
+          "returns": "float",
+          "static": true,
+          "rpc": null
+        }
+      ],
+      "signals": [],
+      "consts": [],
+      "vars": [],
+      "enums": [],
+      "onready": [],
+      "rpcs": [],
+      "loads": [],
+      "loc": 78
+    },
+    {
+      "file": "scripts/entities/entity.gd",
+      "lang": "gdscript",
+      "class_name": "Entity",
+      "extends": "CharacterBody2D",
+      "funcs": [
+        {
+          "name": "_ready",
+          "line": 27,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "process_entity_status",
+          "line": 30,
+          "args": "delta: float",
+          "returns": "bool",
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "take_damage",
+          "line": 48,
+          "args": "amount: int, attacker_id: int = -1",
+          "returns": "int",
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "heal",
+          "line": 63,
+          "args": "amount: int",
+          "returns": "void",
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "apply_stun",
+          "line": 71,
+          "args": "duration: float",
+          "returns": "void",
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "play_damage_feedback",
+          "line": 82,
+          "args": "amount: int",
+          "returns": "void",
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_die",
+          "line": 91,
+          "args": "_attacker_id: int = -1",
+          "returns": "void",
+          "static": false,
+          "rpc": null
+        }
+      ],
+      "signals": [
+        {
+          "name": "health_changed",
+          "line": 10,
+          "args": "(current_hp, max_hp)"
+        },
+        {
+          "name": "entity_died",
+          "line": 11,
+          "args": "()"
+        },
+        {
+          "name": "stun_state_changed",
+          "line": 12,
+          "args": "(is_stunned)"
+        }
+      ],
+      "consts": [
+        {
+          "name": "FloatingText",
+          "line": 4
+        },
+        {
+          "name": "CombatFormula",
+          "line": 5
+        }
+      ],
+      "vars": [
+        {
+          "name": "max_hp",
+          "line": 14
+        },
+        {
+          "name": "current_hp",
+          "line": 15
+        },
+        {
+          "name": "move_speed",
+          "line": 16
+        },
+        {
+          "name": "defense",
+          "line": 17
+        },
+        {
+          "name": "is_dead",
+          "line": 19
+        },
+        {
+          "name": "is_stunned",
+          "line": 20
+        },
+        {
+          "name": "stun_timer",
+          "line": 21
+        }
+      ],
+      "enums": [],
+      "onready": [
+        {
+          "name": "entity_sprite",
+          "line": 25
+        }
+      ],
+      "rpcs": [],
+      "loads": [
+        {
+          "target": "res://scripts/ui/floating_text.gd",
+          "line": 4
+        },
+        {
+          "target": "res://scripts/combat/combat_formula.gd",
+          "line": 5
+        }
+      ],
+      "loc": 93
+    },
+    {
+      "file": "scripts/entities/loot_drop.gd",
+      "lang": "gdscript",
+      "class_name": null,
+      "extends": "Area2D",
+      "funcs": [
+        {
+          "name": "_ready",
+          "line": 16,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_process",
+          "line": 44,
+          "args": "delta: float",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_on_body_entered",
+          "line": 48,
+          "args": "body: Node2D",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        }
+      ],
+      "signals": [],
+      "consts": [],
+      "vars": [
+        {
+          "name": "loot_type",
+          "line": 7
+        },
+        {
+          "name": "value",
+          "line": 8
+        },
+        {
+          "name": "item_payload",
+          "line": 9
+        },
+        {
+          "name": "initial_y",
+          "line": 13
+        },
+        {
+          "name": "time_passed",
+          "line": 14
+        }
+      ],
+      "enums": [
+        {
+          "name": "LootType",
+          "line": 5
+        }
+      ],
+      "onready": [
+        {
+          "name": "sprite",
+          "line": 11
+        }
+      ],
+      "rpcs": [],
+      "loads": [
+        {
+          "target": "res://assets/sprites/gem_xp.png",
+          "line": 23
+        },
+        {
+          "target": "res://assets/sprites/potion_hp.png",
+          "line": 26
+        },
+        {
+          "target": "res://assets/sprites/potion_hp.png",
+          "line": 29
+        },
+        {
+          "target": "res://assets/sprites/slash.png",
+          "line": 32
+        },
+        {
+          "target": "res://assets/sprites/potion_hp.png",
+          "line": 35
+        },
+        {
+          "target": "res://assets/sprites/projectile.png",
+          "line": 38
+        },
+        {
+          "target": "res://assets/sprites/gem_xp.png",
+          "line": 41
+        }
+      ],
+      "loc": 89
+    },
+    {
+      "file": "scripts/entities/monster.gd",
+      "lang": "gdscript",
+      "class_name": "Monster",
+      "extends": "Entity",
+      "funcs": [
+        {
+          "name": "_ready",
+          "line": 53,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "apply_sync_state",
+          "line": 92,
+          "args": "pos: Vector2, flip: bool, hp: int, dead: bool",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_physics_process",
+          "line": 112,
+          "args": "delta: float",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_process_chase",
+          "line": 142,
+          "args": "delta: float",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_terrain_speed_multiplier",
+          "line": 177,
+          "args": "",
+          "returns": "float",
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_set_anim",
+          "line": 186,
+          "args": "name: String",
+          "returns": "void",
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_find_nearest_player",
+          "line": 194,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_start_attack_windup",
+          "line": 204,
+          "args": "target: Node2D",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_process_windup",
+          "line": 212,
+          "args": "delta: float",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_execute_attack_strike",
+          "line": 224,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_process_recovery",
+          "line": 250,
+          "args": "delta: float",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_attack_target",
+          "line": 261,
+          "args": "player_node: Node2D",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_draw",
+          "line": 267,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "take_damage",
+          "line": 293,
+          "args": "amount: int, attacker_peer_id: int = -1",
+          "returns": "int",
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "apply_damage_from_network",
+          "line": 305,
+          "args": "amount: int, attacker_peer_id: int = -1",
+          "returns": "int",
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_die",
+          "line": 316,
+          "args": "killer_id: int = -1",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_respawn",
+          "line": 352,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_spawn_loot",
+          "line": 376,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_update_hp_bar",
+          "line": 413,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        }
+      ],
+      "signals": [],
+      "consts": [
+        {
+          "name": "ItemDatabase",
+          "line": 7
+        },
+        {
+          "name": "RESPAWN_TIME",
+          "line": 38
+        },
+        {
+          "name": "RESPAWN_TIME_BOSS",
+          "line": 39
+        }
+      ],
+      "vars": [
+        {
+          "name": "monster_type",
+          "line": 12
+        },
+        {
+          "name": "is_king_slime",
+          "line": 13
+        },
+        {
+          "name": "aggro_radius",
+          "line": 14
+        },
+        {
+          "name": "attack_radius",
+          "line": 15
+        },
+        {
+          "name": "attack_damage",
+          "line": 16
+        },
+        {
+          "name": "attack_cooldown",
+          "line": 17
+        },
+        {
+          "name": "max_health",
+          "line": 20
+        },
+        {
+          "name": "current_health",
+          "line": 23
+        },
+        {
+          "name": "current_state",
+          "line": 27
+        },
+        {
+          "name": "target_player",
+          "line": 28
+        },
+        {
+          "name": "can_attack",
+          "line": 29
+        },
+        {
+          "name": "windup_duration",
+          "line": 31
+        },
+        {
+          "name": "windup_timer",
+          "line": 32
+        },
+        {
+          "name": "recovery_timer",
+          "line": 33
+        },
+        {
+          "name": "respawn_timer",
+          "line": 40
+        },
+        {
+          "name": "target_pos",
+          "line": 42
+        },
+        {
+          "name": "target_sync_pos",
+          "line": 43
+        },
+        {
+          "name": "wander_timer",
+          "line": 44
+        },
+        {
+          "name": "spawn_pos",
+          "line": 45
+        },
+        {
+          "name": "attack_target_pos",
+          "line": 46
+        },
+        {
+          "name": "_world",
+          "line": 173
+        }
+      ],
+      "enums": [
+        {
+          "name": "State",
+          "line": 9
+        },
+        {
+          "name": "MonsterType",
+          "line": 10
+        }
+      ],
+      "onready": [
+        {
+          "name": "sprite",
+          "line": 48
+        },
+        {
+          "name": "hp_bar",
+          "line": 49
+        },
+        {
+          "name": "name_label",
+          "line": 50
+        },
+        {
+          "name": "collision_shape",
+          "line": 51
+        }
+      ],
+      "rpcs": [],
+      "loads": [
+        {
+          "target": "res://scripts/items/item_database.gd",
+          "line": 7
+        },
+        {
+          "target": "res://assets/spriteframes/slime_king.tres",
+          "line": 70
+        },
+        {
+          "target": "res://scenes/loot_drop.tscn",
+          "line": 377
+        }
+      ],
+      "loc": 416
+    },
+    {
+      "file": "scripts/entities/player.gd",
+      "lang": "gdscript",
+      "class_name": "Player",
+      "extends": "Entity",
+      "funcs": [
+        {
+          "name": "_ready",
+          "line": 74,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "recalculate_stats",
+          "line": 97,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_apply_skin",
+          "line": 124,
+          "args": "idx: int",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_physics_process",
+          "line": 136,
+          "args": "delta: float",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_handle_local_input",
+          "line": 184,
+          "args": "delta: float",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_unhandled_input",
+          "line": 241,
+          "args": "event: InputEvent",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "dodge_roll",
+          "line": 262,
+          "args": "",
+          "returns": "bool",
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_handle_remote_interpolation",
+          "line": 293,
+          "args": "delta: float",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_terrain_speed_multiplier",
+          "line": 300,
+          "args": "",
+          "returns": "float",
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_set_anim",
+          "line": 309,
+          "args": "name: String",
+          "returns": "void",
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "face_direction",
+          "line": 319,
+          "args": "dir: Vector2",
+          "returns": "void",
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "set_network_transform",
+          "line": 329,
+          "args": "pos: Vector2, flip: bool",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_execute_basic_attack",
+          "line": 336,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_execute_charged_attack",
+          "line": 343,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_execute_skill",
+          "line": 350,
+          "args": "idx: int",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "damage_enemies_in_radius",
+          "line": 354,
+          "args": "radius: float, dmg: int",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "take_damage",
+          "line": 362,
+          "args": "amount: int, attacker_id: int = -1",
+          "returns": "int",
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "use_energy",
+          "line": 383,
+          "args": "amount: int",
+          "returns": "bool",
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "restore_energy",
+          "line": 391,
+          "args": "amount: int, show_popup: bool = true",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "show_notification",
+          "line": 399,
+          "args": "text: String, col: Color = Color.WHITE",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "play_slash_effect",
+          "line": 411,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "gain_xp",
+          "line": 418,
+          "args": "amount: int",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_level_up",
+          "line": 430,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "show_levelup_fanfare",
+          "line": 461,
+          "args": "new_level: int",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_die",
+          "line": 473,
+          "args": "attacker_id: int = -1",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_respawn",
+          "line": 492,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_update_nameplate",
+          "line": 505,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_update_hp_bar",
+          "line": 516,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        }
+      ],
+      "signals": [
+        {
+          "name": "stats_changed",
+          "line": 9,
+          "args": "(hp, max_hp, level, xp, xp_next)"
+        },
+        {
+          "name": "energy_changed",
+          "line": 10,
+          "args": "(current_energy, max_energy)"
+        },
+        {
+          "name": "stamina_changed",
+          "line": 11,
+          "args": "(current_stamina, max_stamina)"
+        },
+        {
+          "name": "skill_cooldown_started",
+          "line": 12,
+          "args": "(skill_index, duration)"
+        }
+      ],
+      "consts": [
+        {
+          "name": "HeroClass",
+          "line": 4
+        }
+      ],
+      "vars": [
+        {
+          "name": "peer_id",
+          "line": 14
+        },
+        {
+          "name": "player_name",
+          "line": 15
+        },
+        {
+          "name": "skin_index",
+          "line": 16
+        },
+        {
+          "name": "is_local",
+          "line": 17
+        },
+        {
+          "name": "hero_class",
+          "line": 18
+        },
+        {
+          "name": "hero_strategy",
+          "line": 20
+        },
+        {
+          "name": "max_energy",
+          "line": 23
+        },
+        {
+          "name": "current_energy",
+          "line": 24
+        },
+        {
+          "name": "energy_regen_rate",
+          "line": 25
+        },
+        {
+          "name": "energy_regen_accum",
+          "line": 26
+        },
+        {
+          "name": "health_regen_accum",
+          "line": 27
+        },
+        {
+          "name": "max_stamina",
+          "line": 29
+        },
+        {
+          "name": "current_stamina",
+          "line": 30
+        },
+        {
+          "name": "stamina_regen_rate",
+          "line": 31
+        },
+        {
+          "name": "is_rolling",
+          "line": 34
+        },
+        {
+          "name": "is_invulnerable",
+          "line": 35
+        },
+        {
+          "name": "roll_dir",
+          "line": 36
+        },
+        {
+          "name": "level",
+          "line": 39
+        },
+        {
+          "name": "xp",
+          "line": 40
+        },
+        {
+          "name": "xp_to_next",
+          "line": 41
+        },
+        {
+          "name": "attack_damage",
+          "line": 42
+        },
+        {
+          "name": "attack_cooldown",
+          "line": 43
+        },
+        {
+          "name": "can_attack",
+          "line": 44
+        },
+        {
+          "name": "facing_dir",
+          "line": 45
+        },
+        {
+          "name": "attack_charge_time",
+          "line": 48
+        },
+        {
+          "name": "is_charging_attack",
+          "line": 49
+        },
+        {
+          "name": "skill1_cd",
+          "line": 51
+        },
+        {
+          "name": "skill2_cd",
+          "line": 52
+        },
+        {
+          "name": "skill3_cd",
+          "line": 53
+        },
+        {
+          "name": "target_sync_pos",
+          "line": 56
+        },
+        {
+          "name": "send_sync_timer",
+          "line": 57
+        },
+        {
+          "name": "_current_anim",
+          "line": 61
+        },
+        {
+          "name": "_world",
+          "line": 65
+        }
+      ],
+      "enums": [],
+      "onready": [
+        {
+          "name": "sprite",
+          "line": 67
+        },
+        {
+          "name": "name_label",
+          "line": 68
+        },
+        {
+          "name": "hp_bar",
+          "line": 69
+        },
+        {
+          "name": "camera",
+          "line": 70
+        },
+        {
+          "name": "attack_area",
+          "line": 71
+        },
+        {
+          "name": "slash_sprite",
+          "line": 72
+        }
+      ],
+      "rpcs": [],
+      "loads": [
+        {
+          "target": "res://scripts/classes/hero_class.gd",
+          "line": 4
+        }
+      ],
+      "loc": 519
+    },
+    {
+      "file": "scripts/entities/projectile.gd",
+      "lang": "gdscript",
+      "class_name": null,
+      "extends": "Area2D",
+      "funcs": [
+        {
+          "name": "_ready",
+          "line": 16,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_physics_process",
+          "line": 24,
+          "args": "delta: float",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_on_body_entered",
+          "line": 27,
+          "args": "body: Node2D",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_on_area_entered",
+          "line": 30,
+          "args": "area: Area2D",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_handle_hit",
+          "line": 33,
+          "args": "target: Node2D",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        }
+      ],
+      "signals": [],
+      "consts": [],
+      "vars": [
+        {
+          "name": "speed",
+          "line": 5
+        },
+        {
+          "name": "damage",
+          "line": 6
+        },
+        {
+          "name": "lifetime",
+          "line": 7
+        },
+        {
+          "name": "is_piercing",
+          "line": 8
+        },
+        {
+          "name": "causes_stun",
+          "line": 9
+        },
+        {
+          "name": "stun_duration",
+          "line": 10
+        },
+        {
+          "name": "direction",
+          "line": 12
+        },
+        {
+          "name": "shooter_id",
+          "line": 13
+        },
+        {
+          "name": "hit_targets",
+          "line": 14
+        }
+      ],
+      "enums": [],
+      "onready": [],
+      "rpcs": [],
+      "loads": [],
+      "loc": 60
+    },
+    {
+      "file": "scripts/items/item_database.gd",
+      "lang": "gdscript",
+      "class_name": "ItemDatabase",
+      "extends": "RefCounted",
+      "funcs": [
+        {
+          "name": "create_item",
+          "line": 146,
+          "args": "item_id: String, quantity: int = 1",
+          "returns": "Dictionary",
+          "static": true,
+          "rpc": null
+        },
+        {
+          "name": "get_rarity_color",
+          "line": 163,
+          "args": "rarity: String",
+          "returns": "Color",
+          "static": true,
+          "rpc": null
+        },
+        {
+          "name": "can_equip",
+          "line": 174,
+          "args": "item: Dictionary, hero_class: String, player_level: int",
+          "returns": "bool",
+          "static": true,
+          "rpc": null
+        }
+      ],
+      "signals": [],
+      "consts": [
+        {
+          "name": "ITEMS",
+          "line": 6
+        }
+      ],
+      "vars": [],
+      "enums": [],
+      "onready": [],
+      "rpcs": [],
+      "loads": [],
+      "loc": 186
+    },
+    {
+      "file": "scripts/network/game_state.gd",
+      "lang": "gdscript",
+      "class_name": null,
+      "extends": "Node",
+      "funcs": [
+        {
+          "name": "_ready",
+          "line": 57,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "init_inventory",
+          "line": 63,
+          "args": "items_array: Array",
+          "returns": "void",
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "load_character_stats",
+          "line": 75,
+          "args": "data: Dictionary",
+          "returns": "void",
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "register_local_player",
+          "line": 86,
+          "args": "peer_id: int, p_name: String, skin_idx: int",
+          "returns": "void",
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "register_player_info",
+          "line": 92,
+          "args": "peer_id: int, p_name: String, skin_idx: int, level: int = 1, hp: int = 100, max_hp: int = 100",
+          "returns": "void",
+          "static": false,
+          "rpc": "any_peer,call_local,reliable"
+        },
+        {
+          "name": "unregister_player",
+          "line": 105,
+          "args": "peer_id: int",
+          "returns": "void",
+          "static": false,
+          "rpc": "any_peer,call_local,reliable"
+        },
+        {
+          "name": "send_chat",
+          "line": 113,
+          "args": "sender_name: String, message_text: String, is_system: bool = false",
+          "returns": "void",
+          "static": false,
+          "rpc": "any_peer,call_local,reliable"
+        },
+        {
+          "name": "sync_player_stat",
+          "line": 117,
+          "args": "peer_id: int, stat_name: String, value: Variant",
+          "returns": "void",
+          "static": false,
+          "rpc": "any_peer,call_local,reliable"
+        },
+        {
+          "name": "get_player_name",
+          "line": 122,
+          "args": "peer_id: int",
+          "returns": "String",
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "get_player_info",
+          "line": 127,
+          "args": "peer_id: int",
+          "returns": "Dictionary",
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "set_ui_modal_open",
+          "line": 131,
+          "args": "is_open: bool",
+          "returns": "void",
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "is_ui_focused",
+          "line": 137,
+          "args": "",
+          "returns": "bool",
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "get_equipment_bonus",
+          "line": 141,
+          "args": "stat_name: String",
+          "returns": "int",
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "equip_item",
+          "line": 150,
+          "args": "slot_idx: int, player_level: int = 1",
+          "returns": "bool",
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "unequip_slot",
+          "line": 180,
+          "args": "slot_type: String",
+          "returns": "bool",
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "assign_quick_slot",
+          "line": 202,
+          "args": "quick_idx: int, inv_slot_idx: int",
+          "returns": "void",
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "use_quick_slot",
+          "line": 211,
+          "args": "quick_idx: int",
+          "returns": "void",
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "toggle_pk_mode",
+          "line": 226,
+          "args": "player_level: int",
+          "returns": "bool",
+          "static": false,
+          "rpc": null
+        }
+      ],
+      "signals": [
+        {
+          "name": "player_registered",
+          "line": 6,
+          "args": "(peer_id, info)"
+        },
+        {
+          "name": "player_unregistered",
+          "line": 7,
+          "args": "(peer_id)"
+        },
+        {
+          "name": "chat_received",
+          "line": 8,
+          "args": "(sender_name, text, is_system)"
+        },
+        {
+          "name": "player_stat_changed",
+          "line": 9,
+          "args": "(peer_id, stat_name, new_val)"
+        },
+        {
+          "name": "system_banner",
+          "line": 10,
+          "args": "(text)"
+        },
+        {
+          "name": "auth_succeeded",
+          "line": 11,
+          "args": "(user_data, char_data)"
+        },
+        {
+          "name": "auth_failed",
+          "line": 12,
+          "args": "(error_message)"
+        },
+        {
+          "name": "inventory_updated",
+          "line": 13,
+          "args": "(items)"
+        },
+        {
+          "name": "stats_updated",
+          "line": 14,
+          "args": "()"
+        },
+        {
+          "name": "equipped_gear_updated",
+          "line": 15,
+          "args": "(gear)"
+        },
+        {
+          "name": "quick_slots_updated",
+          "line": 16,
+          "args": "(slots)"
+        },
+        {
+          "name": "pk_mode_changed",
+          "line": 17,
+          "args": "(enabled)"
+        }
+      ],
+      "consts": [],
+      "vars": [
+        {
+          "name": "local_peer_id",
+          "line": 19
+        },
+        {
+          "name": "local_player_name",
+          "line": 20
+        },
+        {
+          "name": "selected_skin_index",
+          "line": 21
+        },
+        {
+          "name": "user_id",
+          "line": 22
+        },
+        {
+          "name": "hero_class",
+          "line": 23
+        },
+        {
+          "name": "stat_str",
+          "line": 26
+        },
+        {
+          "name": "stat_vit",
+          "line": 27
+        },
+        {
+          "name": "stat_agi",
+          "line": 28
+        },
+        {
+          "name": "stat_int",
+          "line": 29
+        },
+        {
+          "name": "unspent_stat_points",
+          "line": 30
+        },
+        {
+          "name": "current_energy",
+          "line": 33
+        },
+        {
+          "name": "max_energy",
+          "line": 34
+        },
+        {
+          "name": "current_stamina",
+          "line": 35
+        },
+        {
+          "name": "max_stamina",
+          "line": 36
+        },
+        {
+          "name": "is_pk_enabled",
+          "line": 39
+        },
+        {
+          "name": "equipped_gear",
+          "line": 42
+        },
+        {
+          "name": "quick_slots",
+          "line": 47
+        },
+        {
+          "name": "ui_modal_open_count",
+          "line": 50
+        },
+        {
+          "name": "inventory",
+          "line": 53
+        },
+        {
+          "name": "players",
+          "line": 55
+        }
+      ],
+      "enums": [],
+      "onready": [],
+      "rpcs": [
+        {
+          "name": "register_player_info",
+          "line": 92,
+          "config": "any_peer,call_local,reliable"
+        },
+        {
+          "name": "unregister_player",
+          "line": 105,
+          "config": "any_peer,call_local,reliable"
+        },
+        {
+          "name": "send_chat",
+          "line": 113,
+          "config": "any_peer,call_local,reliable"
+        },
+        {
+          "name": "sync_player_stat",
+          "line": 117,
+          "config": "any_peer,call_local,reliable"
+        }
+      ],
+      "loads": [],
+      "loc": 236
+    },
+    {
+      "file": "scripts/network/network_manager.gd",
+      "lang": "gdscript",
+      "class_name": null,
+      "extends": "Node",
+      "funcs": [
+        {
+          "name": "_ready",
+          "line": 28,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_process",
+          "line": 31,
+          "args": "delta: float",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "start_client",
+          "line": 73,
+          "args": "url: String",
+          "returns": "Error",
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "start_solo",
+          "line": 94,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "disconnect_network",
+          "line": 104,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "send_packet",
+          "line": 121,
+          "args": "dict: Dictionary",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_broadcast_monsters_state",
+          "line": 125,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_handle_network_message",
+          "line": 149,
+          "args": "msg: Dictionary",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "spawn_player_node",
+          "line": 352,
+          "args": "peer_id: int, p_name: String, skin_idx: int, pos: Vector2, is_local_player: bool, p_level: int = 1, p_hp: int = 100, p_max_hp: int = 100",
+          "returns": "void",
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "despawn_player_node",
+          "line": 382,
+          "args": "peer_id: int",
+          "returns": "void",
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_spawn_projectile",
+          "line": 391,
+          "args": "pos: Vector2, dir: Vector2, shooter: int, damage: int = -1, max_range: float = -1.0",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_get_class_for_skin",
+          "line": 406,
+          "args": "skin_idx: int",
+          "returns": "String",
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "start_guest",
+          "line": 412,
+          "args": "class_type: String = \"warrior\"",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "send_register",
+          "line": 441,
+          "args": "u: String, p: String, class_type: String = \"warrior\", skin: int = 0",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "send_login",
+          "line": 450,
+          "args": "u: String, p: String",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "send_allocate_stat",
+          "line": 457,
+          "args": "stat_name: String",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "send_item_pickup",
+          "line": 481,
+          "args": "item_dict: Dictionary",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "send_item_use",
+          "line": 505,
+          "args": "slot_idx: int",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_apply_item_effect",
+          "line": 522,
+          "args": "item_id: String",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        }
+      ],
+      "signals": [
+        {
+          "name": "connection_succeeded",
+          "line": 7,
+          "args": ""
+        },
+        {
+          "name": "connection_failed_event",
+          "line": 8,
+          "args": ""
+        },
+        {
+          "name": "server_disconnected_event",
+          "line": 9,
+          "args": ""
+        },
+        {
+          "name": "peer_connected_event",
+          "line": 10,
+          "args": "(id)"
+        },
+        {
+          "name": "peer_disconnected_event",
+          "line": 11,
+          "args": "(id)"
+        },
+        {
+          "name": "match_started",
+          "line": 12,
+          "args": ""
+        }
+      ],
+      "consts": [
+        {
+          "name": "DEFAULT_PORT",
+          "line": 14
+        },
+        {
+          "name": "DEFAULT_HOST",
+          "line": 15
+        }
+      ],
+      "vars": [
+        {
+          "name": "socket",
+          "line": 17
+        },
+        {
+          "name": "is_connected_to_server",
+          "line": 18
+        },
+        {
+          "name": "was_connected",
+          "line": 19
+        },
+        {
+          "name": "is_solo_mode",
+          "line": 20
+        },
+        {
+          "name": "is_room_host",
+          "line": 21
+        },
+        {
+          "name": "local_id",
+          "line": 22
+        },
+        {
+          "name": "monster_sync_timer",
+          "line": 24
+        },
+        {
+          "name": "player_scene",
+          "line": 26
+        }
+      ],
+      "enums": [],
+      "onready": [],
+      "rpcs": [],
+      "loads": [
+        {
+          "target": "res://scenes/player.tscn",
+          "line": 26
+        },
+        {
+          "target": "res://scenes/projectile.tscn",
+          "line": 392
+        }
+      ],
+      "loc": 544
+    },
+    {
+      "file": "scripts/network/sound_manager.gd",
+      "lang": "gdscript",
+      "class_name": null,
+      "extends": "Node",
+      "funcs": [
+        {
+          "name": "_ready",
+          "line": 8,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_load_sound",
+          "line": 15,
+          "args": "sound_name: String, path: String",
+          "returns": "void",
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "play",
+          "line": 21,
+          "args": "sound_name: String, volume_db: float = 0.0",
+          "returns": "void",
+          "static": false,
+          "rpc": null
+        }
+      ],
+      "signals": [],
+      "consts": [],
+      "vars": [
+        {
+          "name": "sounds",
+          "line": 6
+        }
+      ],
+      "enums": [],
+      "onready": [],
+      "rpcs": [],
+      "loads": [],
+      "loc": 29
+    },
+    {
+      "file": "scripts/ui/chat_box.gd",
+      "lang": "gdscript",
+      "class_name": null,
+      "extends": "Control",
+      "funcs": [
+        {
+          "name": "_ready",
+          "line": 13,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_unhandled_input",
+          "line": 26,
+          "args": "event: InputEvent",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_on_tab_toggle_pressed",
+          "line": 36,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_set_minimized",
+          "line": 39,
+          "args": "minimized: bool",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_on_send_pressed",
+          "line": 48,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_on_text_submitted",
+          "line": 51,
+          "args": "text: String",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_on_chat_received",
+          "line": 66,
+          "args": "sender: String, message: String, is_system: bool",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        }
+      ],
+      "signals": [],
+      "consts": [],
+      "vars": [
+        {
+          "name": "is_minimized",
+          "line": 11
+        }
+      ],
+      "enums": [],
+      "onready": [
+        {
+          "name": "panel",
+          "line": 5
+        },
+        {
+          "name": "chat_log",
+          "line": 6
+        },
+        {
+          "name": "message_input",
+          "line": 7
+        },
+        {
+          "name": "send_btn",
+          "line": 8
+        },
+        {
+          "name": "tab_toggle_btn",
+          "line": 9
+        }
+      ],
+      "rpcs": [],
+      "loads": [],
+      "loc": 77
+    },
+    {
+      "file": "scripts/ui/floating_text.gd",
+      "lang": "gdscript",
+      "class_name": "FloatingText",
+      "extends": "Node2D",
+      "funcs": [
+        {
+          "name": "spawn",
+          "line": 8,
+          "args": "parent: Node, world_pos: Vector2, display_text: String, text_color: Color = Color.WHITE, crit: bool = false",
+          "returns": null,
+          "static": true,
+          "rpc": null
+        },
+        {
+          "name": "_ready",
+          "line": 25,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        }
+      ],
+      "signals": [],
+      "consts": [],
+      "vars": [
+        {
+          "name": "text",
+          "line": 4
+        },
+        {
+          "name": "color",
+          "line": 5
+        },
+        {
+          "name": "is_crit",
+          "line": 6
+        }
+      ],
+      "enums": [],
+      "onready": [],
+      "rpcs": [],
+      "loads": [
+        {
+          "target": "res://scripts/ui/floating_text.gd",
+          "line": 11
+        }
+      ],
+      "loc": 48
+    },
+    {
+      "file": "scripts/ui/hud.gd",
+      "lang": "gdscript",
+      "class_name": null,
+      "extends": "CanvasLayer",
+      "funcs": [
+        {
+          "name": "_ready",
+          "line": 33,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_build_stamina_bar_ui",
+          "line": 61,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_build_quick_slots_ui",
+          "line": 92,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_on_player_spawned",
+          "line": 114,
+          "args": "node: Node",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "update_stats",
+          "line": 123,
+          "args": "hp: int, max_hp: int, level: int, xp: int, xp_next: int",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "update_energy",
+          "line": 135,
+          "args": "curr: int, max_en: int",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "update_stamina",
+          "line": 140,
+          "args": "curr: float, max_sta: float",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_on_quick_slots_updated",
+          "line": 147,
+          "args": "slots: Array",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_on_skill_cooldown",
+          "line": 166,
+          "args": "skill_idx: int, duration: float",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_update_skill_labels",
+          "line": 172,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_on_players_changed",
+          "line": 187,
+          "args": "_id = 0, _info = {}",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_on_stat_changed",
+          "line": 190,
+          "args": "_id: int, _stat: String, _val: Variant",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_refresh_player_list",
+          "line": 193,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        }
+      ],
+      "signals": [],
+      "consts": [],
+      "vars": [
+        {
+          "name": "stamina_bar",
+          "line": 26
+        },
+        {
+          "name": "stamina_label",
+          "line": 27
+        },
+        {
+          "name": "quick_q_btn",
+          "line": 28
+        },
+        {
+          "name": "quick_e_btn",
+          "line": 29
+        },
+        {
+          "name": "local_player_node",
+          "line": 31
+        }
+      ],
+      "enums": [],
+      "onready": [
+        {
+          "name": "hp_bar",
+          "line": 5
+        },
+        {
+          "name": "hp_label",
+          "line": 6
+        },
+        {
+          "name": "energy_bar",
+          "line": 7
+        },
+        {
+          "name": "energy_label",
+          "line": 8
+        },
+        {
+          "name": "xp_bar",
+          "line": 9
+        },
+        {
+          "name": "xp_label",
+          "line": 10
+        },
+        {
+          "name": "level_label",
+          "line": 11
+        },
+        {
+          "name": "stats_btn",
+          "line": 13
+        },
+        {
+          "name": "bag_btn",
+          "line": 14
+        },
+        {
+          "name": "online_count_label",
+          "line": 16
+        },
+        {
+          "name": "player_list",
+          "line": 17
+        },
+        {
+          "name": "skill1_btn",
+          "line": 19
+        },
+        {
+          "name": "skill2_btn",
+          "line": 20
+        },
+        {
+          "name": "skill3_btn",
+          "line": 21
+        },
+        {
+          "name": "stats_panel",
+          "line": 23
+        },
+        {
+          "name": "inventory_ui",
+          "line": 24
+        }
+      ],
+      "rpcs": [],
+      "loads": [],
+      "loc": 209
+    },
+    {
+      "file": "scripts/ui/inventory_ui.gd",
+      "lang": "gdscript",
+      "class_name": null,
+      "extends": "PanelContainer",
+      "funcs": [
+        {
+          "name": "_ready",
+          "line": 15,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_build_paperdoll_ui",
+          "line": 37,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_unhandled_input",
+          "line": 70,
+          "args": "event: InputEvent",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "toggle",
+          "line": 75,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "set_open",
+          "line": 78,
+          "args": "open: bool",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_on_inventory_updated",
+          "line": 87,
+          "args": "_items: Array",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_on_equipped_updated",
+          "line": 90,
+          "args": "gear: Dictionary",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_refresh_slots",
+          "line": 106,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_on_slot_hover",
+          "line": 132,
+          "args": "slot_idx: int",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_on_slot_clicked",
+          "line": 140,
+          "args": "slot_idx: int",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_on_slot_gui_input",
+          "line": 159,
+          "args": "event: InputEvent, slot_idx: int",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        }
+      ],
+      "signals": [],
+      "consts": [],
+      "vars": [
+        {
+          "name": "slot_buttons",
+          "line": 10
+        },
+        {
+          "name": "equip_weapon_btn",
+          "line": 11
+        },
+        {
+          "name": "equip_armor_btn",
+          "line": 12
+        },
+        {
+          "name": "equip_acc_btn",
+          "line": 13
+        }
+      ],
+      "enums": [],
+      "onready": [
+        {
+          "name": "grid",
+          "line": 6
+        },
+        {
+          "name": "info_label",
+          "line": 7
+        },
+        {
+          "name": "close_btn",
+          "line": 8
+        }
+      ],
+      "rpcs": [],
+      "loads": [],
+      "loc": 169
+    },
+    {
+      "file": "scripts/ui/lobby_ui.gd",
+      "lang": "gdscript",
+      "class_name": null,
+      "extends": "Control",
+      "funcs": [
+        {
+          "name": "_ready",
+          "line": 16,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_auto_connect_ws",
+          "line": 53,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_get_selected_class",
+          "line": 61,
+          "args": "",
+          "returns": "String",
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_on_login_pressed",
+          "line": 67,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_on_register_pressed",
+          "line": 79,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_on_guest_pressed",
+          "line": 93,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_on_auth_succeeded",
+          "line": 103,
+          "args": "_user_data, _char_data",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_on_auth_failed",
+          "line": 108,
+          "args": "err_msg: String",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_on_connected",
+          "line": 112,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_on_connect_failed",
+          "line": 117,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_on_disconnected",
+          "line": 123,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        }
+      ],
+      "signals": [],
+      "consts": [],
+      "vars": [
+        {
+          "name": "is_socket_ready",
+          "line": 14
+        }
+      ],
+      "enums": [],
+      "onready": [
+        {
+          "name": "username_input",
+          "line": 5
+        },
+        {
+          "name": "password_input",
+          "line": 6
+        },
+        {
+          "name": "class_option",
+          "line": 7
+        },
+        {
+          "name": "address_input",
+          "line": 8
+        },
+        {
+          "name": "login_btn",
+          "line": 9
+        },
+        {
+          "name": "register_btn",
+          "line": 10
+        },
+        {
+          "name": "guest_btn",
+          "line": 11
+        },
+        {
+          "name": "status_label",
+          "line": 12
+        }
+      ],
+      "rpcs": [],
+      "loads": [],
+      "loc": 128
+    },
+    {
+      "file": "scripts/ui/minimap.gd",
+      "lang": "gdscript",
+      "class_name": null,
+      "extends": "Control",
+      "funcs": [
+        {
+          "name": "_ready",
+          "line": 46,
+          "args": "",
+          "returns": "void",
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_process",
+          "line": 53,
+          "args": "delta: float",
+          "returns": "void",
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_gui_input",
+          "line": 63,
+          "args": "event: InputEvent",
+          "returns": "void",
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_set_zoom",
+          "line": 75,
+          "args": "idx: int",
+          "returns": "void",
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_rebind",
+          "line": 84,
+          "args": "",
+          "returns": "void",
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_local_player",
+          "line": 98,
+          "args": "",
+          "returns": "Node2D",
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_to_map",
+          "line": 107,
+          "args": "world_pos: Vector2",
+          "returns": "Vector2",
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_draw",
+          "line": 112,
+          "args": "",
+          "returns": "void",
+          "static": false,
+          "rpc": null
+        }
+      ],
+      "signals": [],
+      "consts": [
+        {
+          "name": "VIEW_SIZE",
+          "line": 13
+        },
+        {
+          "name": "COL_BG",
+          "line": 15
+        },
+        {
+          "name": "COL_BORDER",
+          "line": 16
+        },
+        {
+          "name": "COL_OBSTACLE",
+          "line": 17
+        },
+        {
+          "name": "COL_MONSTER",
+          "line": 18
+        },
+        {
+          "name": "COL_BOSS",
+          "line": 19
+        },
+        {
+          "name": "COL_LOOT",
+          "line": 20
+        },
+        {
+          "name": "COL_PEER",
+          "line": 21
+        },
+        {
+          "name": "COL_SELF",
+          "line": 22
+        },
+        {
+          "name": "ZOOM_STEPS",
+          "line": 25
+        },
+        {
+          "name": "REFRESH_INTERVAL",
+          "line": 27
+        }
+      ],
+      "vars": [
+        {
+          "name": "zoom_index",
+          "line": 29
+        },
+        {
+          "name": "_refresh_accum",
+          "line": 31
+        },
+        {
+          "name": "_world",
+          "line": 32
+        },
+        {
+          "name": "_players",
+          "line": 33
+        },
+        {
+          "name": "_monsters",
+          "line": 34
+        },
+        {
+          "name": "_obstacles",
+          "line": 35
+        },
+        {
+          "name": "_terrain_tex",
+          "line": 37
+        },
+        {
+          "name": "_half_tiles",
+          "line": 38
+        },
+        {
+          "name": "_tile_px",
+          "line": 39
+        },
+        {
+          "name": "_view_extent",
+          "line": 42
+        },
+        {
+          "name": "_view_centre",
+          "line": 43
+        }
+      ],
+      "enums": [],
+      "onready": [],
+      "rpcs": [],
+      "loads": [],
+      "loc": 176
+    },
+    {
+      "file": "scripts/ui/stats_panel.gd",
+      "lang": "gdscript",
+      "class_name": null,
+      "extends": "PanelContainer",
+      "funcs": [
+        {
+          "name": "_ready",
+          "line": 21,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_unhandled_input",
+          "line": 41,
+          "args": "event: InputEvent",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "toggle",
+          "line": 46,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "set_open",
+          "line": 49,
+          "args": "open: bool",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_refresh_ui",
+          "line": 57,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_on_pk_btn_pressed",
+          "line": 105,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        }
+      ],
+      "signals": [],
+      "consts": [],
+      "vars": [
+        {
+          "name": "pk_btn",
+          "line": 19
+        }
+      ],
+      "enums": [],
+      "onready": [
+        {
+          "name": "class_label",
+          "line": 6
+        },
+        {
+          "name": "points_label",
+          "line": 7
+        },
+        {
+          "name": "str_val",
+          "line": 8
+        },
+        {
+          "name": "str_btn",
+          "line": 9
+        },
+        {
+          "name": "vit_val",
+          "line": 10
+        },
+        {
+          "name": "vit_btn",
+          "line": 11
+        },
+        {
+          "name": "agi_val",
+          "line": 12
+        },
+        {
+          "name": "agi_btn",
+          "line": 13
+        },
+        {
+          "name": "int_val",
+          "line": 14
+        },
+        {
+          "name": "int_btn",
+          "line": 15
+        },
+        {
+          "name": "derived_label",
+          "line": 16
+        },
+        {
+          "name": "close_btn",
+          "line": 17
+        }
+      ],
+      "rpcs": [],
+      "loads": [],
+      "loc": 112
+    },
+    {
+      "file": "scripts/world.gd",
+      "lang": "gdscript",
+      "class_name": null,
+      "extends": "Node2D",
+      "funcs": [
+        {
+          "name": "_ready",
+          "line": 48,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_build_map",
+          "line": 60,
+          "args": "",
+          "returns": "void",
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_lay_out_terrain",
+          "line": 73,
+          "args": "rng: RandomNumberGenerator",
+          "returns": "void",
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_stamp_blob",
+          "line": 119,
+          "args": "centre: Vector2i, radius: float, kind: Terrain, rng: RandomNumberGenerator",
+          "returns": "void",
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_is_on_road",
+          "line": 131,
+          "args": "c: Vector2i",
+          "returns": "bool",
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_compute_water_depth",
+          "line": 141,
+          "args": "",
+          "returns": "void",
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_terrain_at",
+          "line": 164,
+          "args": "c: Vector2i",
+          "returns": "int",
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_slice_offset",
+          "line": 169,
+          "args": "c: Vector2i, kind: int",
+          "returns": "Vector2i",
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_paint_ground",
+          "line": 183,
+          "args": "",
+          "returns": "void",
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_scatter_props",
+          "line": 202,
+          "args": "rng: RandomNumberGenerator",
+          "returns": "void",
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_build_cliff_collision",
+          "line": 226,
+          "args": "",
+          "returns": "void",
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_add_cliff_run",
+          "line": 260,
+          "args": "body: StaticBody2D, x0: int, x1: int, y: int",
+          "returns": "void",
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "world_to_cell",
+          "line": 273,
+          "args": "pos: Vector2",
+          "returns": "Vector2i",
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "terrain_at_world",
+          "line": 277,
+          "args": "pos: Vector2",
+          "returns": "int",
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "water_depth_at_world",
+          "line": 281,
+          "args": "pos: Vector2",
+          "returns": "int",
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "speed_multiplier_at_world",
+          "line": 287,
+          "args": "pos: Vector2",
+          "returns": "float",
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "build_terrain_image",
+          "line": 305,
+          "args": "",
+          "returns": "Image",
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "map_half_tiles",
+          "line": 323,
+          "args": "",
+          "returns": "int",
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "tile_px",
+          "line": 327,
+          "args": "",
+          "returns": "int",
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_on_match_started",
+          "line": 330,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_spawn_initial_monsters",
+          "line": 334,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_create_monster",
+          "line": 353,
+          "args": "pos: Vector2, is_king: bool",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        }
+      ],
+      "signals": [],
+      "consts": [
+        {
+          "name": "TILE_PX",
+          "line": 18
+        },
+        {
+          "name": "MAP_HALF_TILES",
+          "line": 19
+        },
+        {
+          "name": "SRC",
+          "line": 20
+        },
+        {
+          "name": "GRASS_VARIANTS",
+          "line": 22
+        },
+        {
+          "name": "DIRT_ORIGIN",
+          "line": 23
+        },
+        {
+          "name": "WATER_ORIGIN",
+          "line": 24
+        },
+        {
+          "name": "STONE_ORIGIN",
+          "line": 25
+        },
+        {
+          "name": "PROP_ROCK",
+          "line": 27
+        },
+        {
+          "name": "PROP_BUSH",
+          "line": 28
+        },
+        {
+          "name": "PROP_FLOWERS",
+          "line": 29
+        },
+        {
+          "name": "PROP_STUMP",
+          "line": 30
+        },
+        {
+          "name": "PROP_TALLGRASS",
+          "line": 31
+        },
+        {
+          "name": "MAP_SEED",
+          "line": 34
+        },
+        {
+          "name": "PROP_CLIFF",
+          "line": 38
+        },
+        {
+          "name": "WATER_SLOW_PER_DEPTH",
+          "line": 41
+        },
+        {
+          "name": "WATER_SLOW_FLOOR",
+          "line": 42
+        },
+        {
+          "name": "MINIMAP_COLORS",
+          "line": 297
+        }
+      ],
+      "vars": [
+        {
+          "name": "monster_scene",
+          "line": 6
+        },
+        {
+          "name": "_terrain",
+          "line": 44
+        },
+        {
+          "name": "_water_depth",
+          "line": 45
+        }
+      ],
+      "enums": [
+        {
+          "name": "Terrain",
+          "line": 36
+        }
+      ],
+      "onready": [
+        {
+          "name": "monsters_container",
+          "line": 8
+        },
+        {
+          "name": "players_container",
+          "line": 9
+        },
+        {
+          "name": "loot_container",
+          "line": 10
+        },
+        {
+          "name": "ground_layer",
+          "line": 11
+        },
+        {
+          "name": "detail_layer",
+          "line": 12
+        }
+      ],
+      "rpcs": [],
+      "loads": [
+        {
+          "target": "res://scenes/monster.tscn",
+          "line": 6
+        }
+      ],
+      "loc": 357
+    },
+    {
+      "file": "tests/run_game_tests.gd",
+      "lang": "gdscript",
+      "class_name": null,
+      "extends": "Node",
+      "funcs": [
+        {
+          "name": "_ready",
+          "line": 17,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "assert_true",
+          "line": 58,
+          "args": "condition: bool, test_name: String",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_test_chat_system",
+          "line": 67,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_test_map_and_boundaries",
+          "line": 88,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_test_hit_detection_and_combat",
+          "line": 111,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_test_monster_death_and_zero_damage_fix",
+          "line": 140,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_test_monster_respawn",
+          "line": 174,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_test_water_cliffs_and_minimap",
+          "line": 231,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_test_procedural_map",
+          "line": 303,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_test_ranged_autoaim_and_range",
+          "line": 364,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_test_player_attack_and_projectiles",
+          "line": 421,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_test_xp_and_leveling",
+          "line": 445,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_test_level_tally_and_nameplate_sync",
+          "line": 465,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_test_monster_movement_synchronization",
+          "line": 483,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_test_loot_drop",
+          "line": 509,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_test_hud_leaderboard_level_sync",
+          "line": 520,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_test_classic_classes_and_base_stats",
+          "line": 547,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_test_energy_and_regeneration",
+          "line": 577,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_test_class_skills_execution",
+          "line": 604,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_test_inventory_and_item_use",
+          "line": 640,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_test_oop_strategy_and_combat_formulas",
+          "line": 677,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_test_stamina_dodge_roll_and_iframes",
+          "line": 698,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_test_charged_attacks_and_stun",
+          "line": 720,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        },
+        {
+          "name": "_test_item_database_paperdoll_and_ui_lock",
+          "line": 749,
+          "args": "",
+          "returns": null,
+          "static": false,
+          "rpc": null
+        }
+      ],
+      "signals": [],
+      "consts": [
+        {
+          "name": "CombatFormula",
+          "line": 3
+        },
+        {
+          "name": "ItemDatabase",
+          "line": 4
+        },
+        {
+          "name": "HeroClass",
+          "line": 5
+        },
+        {
+          "name": "WarriorClass",
+          "line": 6
+        },
+        {
+          "name": "MageClass",
+          "line": 7
+        },
+        {
+          "name": "ArcherClass",
+          "line": 8
+        }
+      ],
+      "vars": [
+        {
+          "name": "total_tests",
+          "line": 13
+        },
+        {
+          "name": "passed_tests",
+          "line": 14
+        },
+        {
+          "name": "failed_tests",
+          "line": 15
+        }
+      ],
+      "enums": [],
+      "onready": [],
+      "rpcs": [],
+      "loads": [
+        {
+          "target": "res://scripts/combat/combat_formula.gd",
+          "line": 3
+        },
+        {
+          "target": "res://scripts/items/item_database.gd",
+          "line": 4
+        },
+        {
+          "target": "res://scripts/classes/hero_class.gd",
+          "line": 5
+        },
+        {
+          "target": "res://scripts/classes/warrior_class.gd",
+          "line": 6
+        },
+        {
+          "target": "res://scripts/classes/mage_class.gd",
+          "line": 7
+        },
+        {
+          "target": "res://scripts/classes/archer_class.gd",
+          "line": 8
+        },
+        {
+          "target": "res://scenes/world.tscn",
+          "line": 90
+        },
+        {
+          "target": "res://scenes/monster.tscn",
+          "line": 113
+        },
+        {
+          "target": "res://scenes/player.tscn",
+          "line": 114
+        },
+        {
+          "target": "res://scenes/monster.tscn",
+          "line": 142
+        },
+        {
+          "target": "res://scenes/player.tscn",
+          "line": 143
+        },
+        {
+          "target": "res://scenes/monster.tscn",
+          "line": 176
+        },
+        {
+          "target": "res://scenes/player.tscn",
+          "line": 177
+        },
+        {
+          "target": "res://scenes/world.tscn",
+          "line": 234
+        },
+        {
+          "target": "res://scenes/world.tscn",
+          "line": 306
+        },
+        {
+          "target": "res://scenes/monster.tscn",
+          "line": 367
+        },
+        {
+          "target": "res://scenes/player.tscn",
+          "line": 368
+        },
+        {
+          "target": "res://scenes/player.tscn",
+          "line": 423
+        },
+        {
+          "target": "res://scenes/projectile.tscn",
+          "line": 424
+        },
+        {
+          "target": "res://scenes/player.tscn",
+          "line": 447
+        },
+        {
+          "target": "res://scenes/player.tscn",
+          "line": 467
+        },
+        {
+          "target": "res://scenes/monster.tscn",
+          "line": 485
+        },
+        {
+          "target": "res://scenes/loot_drop.tscn",
+          "line": 511
+        },
+        {
+          "target": "res://scenes/player.tscn",
+          "line": 549
+        },
+        {
+          "target": "res://scenes/player.tscn",
+          "line": 579
+        },
+        {
+          "target": "res://scenes/player.tscn",
+          "line": 606
+        },
+        {
+          "target": "res://scenes/monster.tscn",
+          "line": 607
+        },
+        {
+          "target": "res://scenes/player.tscn",
+          "line": 642
+        },
+        {
+          "target": "res://scenes/player.tscn",
+          "line": 700
+        },
+        {
+          "target": "res://scenes/player.tscn",
+          "line": 722
+        },
+        {
+          "target": "res://scenes/monster.tscn",
+          "line": 723
+        }
+      ],
+      "loc": 771
+    }
+  ],
+  "javascript": {
+    "symbols": [
+      {
+        "id": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 db/",
+          "lang": "javascript"
+        },
+        "idDisplay": "codegraph npm godot-web-rpg-server 1.0.0 db/",
+        "name": "db",
+        "kind": "module",
+        "file": "db.js",
+        "line": 1,
+        "signature": ""
+      },
+      {
+        "id": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 db/CLASS_BASELINES.",
+          "lang": "javascript"
+        },
+        "idDisplay": "codegraph npm godot-web-rpg-server 1.0.0 db/CLASS_BASELINES.",
+        "name": "CLASS_BASELINES",
+        "kind": "const",
+        "file": "db.js",
+        "line": 210,
+        "signature": "const CLASS_BASELINES ="
+      },
+      {
+        "id": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 db/DATA_DIR.",
+          "lang": "javascript"
+        },
+        "idDisplay": "codegraph npm godot-web-rpg-server 1.0.0 db/DATA_DIR.",
+        "name": "DATA_DIR",
+        "kind": "const",
+        "file": "db.js",
+        "line": 12,
+        "signature": "const DATA_DIR = path.resolve(__dirname, 'data');"
+      },
+      {
+        "id": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 db/DB_PATH.",
+          "lang": "javascript"
+        },
+        "idDisplay": "codegraph npm godot-web-rpg-server 1.0.0 db/DB_PATH.",
+        "name": "DB_PATH",
+        "kind": "const",
+        "file": "db.js",
+        "line": 17,
+        "signature": "const DB_PATH = process.env.DB_PATH || path.join(DATA_DIR, 'rpg.db');"
+      },
+      {
+        "id": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 db/POINTS_PER_LEVEL.",
+          "lang": "javascript"
+        },
+        "idDisplay": "codegraph npm godot-web-rpg-server 1.0.0 db/POINTS_PER_LEVEL.",
+        "name": "POINTS_PER_LEVEL",
+        "kind": "const",
+        "file": "db.js",
+        "line": 204,
+        "signature": "const POINTS_PER_LEVEL = 3;"
+      },
+      {
+        "id": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 db/crypto.",
+          "lang": "javascript"
+        },
+        "idDisplay": "codegraph npm godot-web-rpg-server 1.0.0 db/crypto.",
+        "name": "crypto",
+        "kind": "const",
+        "file": "db.js",
+        "line": 8,
+        "signature": "const crypto = require('node:crypto');"
+      },
+      {
+        "id": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 db/db.",
+          "lang": "javascript"
+        },
+        "idDisplay": "codegraph npm godot-web-rpg-server 1.0.0 db/db.",
+        "name": "db",
+        "kind": "const",
+        "file": "db.js",
+        "line": 18,
+        "signature": "const db = new DatabaseSync(DB_PATH);"
+      },
+      {
+        "id": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 db/fs.",
+          "lang": "javascript"
+        },
+        "idDisplay": "codegraph npm godot-web-rpg-server 1.0.0 db/fs.",
+        "name": "fs",
+        "kind": "const",
+        "file": "db.js",
+        "line": 9,
+        "signature": "const fs = require('node:fs');"
+      },
+      {
+        "id": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 db/path.",
+          "lang": "javascript"
+        },
+        "idDisplay": "codegraph npm godot-web-rpg-server 1.0.0 db/path.",
+        "name": "path",
+        "kind": "const",
+        "file": "db.js",
+        "line": 10,
+        "signature": "const path = require('node:path');"
+      },
+      {
+        "id": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 db/addInventoryItem().",
+          "lang": "javascript"
+        },
+        "idDisplay": "codegraph npm godot-web-rpg-server 1.0.0 db/addInventoryItem().",
+        "name": "addInventoryItem",
+        "kind": "function",
+        "file": "db.js",
+        "line": 313,
+        "signature": "function addInventoryItem(userId, item)"
+      },
+      {
+        "id": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 db/allocateStat().",
+          "lang": "javascript"
+        },
+        "idDisplay": "codegraph npm godot-web-rpg-server 1.0.0 db/allocateStat().",
+        "name": "allocateStat",
+        "kind": "function",
+        "file": "db.js",
+        "line": 289,
+        "signature": "function allocateStat(userId, statName)"
+      },
+      {
+        "id": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 db/characterPayload().",
+          "lang": "javascript"
+        },
+        "idDisplay": "codegraph npm godot-web-rpg-server 1.0.0 db/characterPayload().",
+        "name": "characterPayload",
+        "kind": "function",
+        "file": "db.js",
+        "line": 252,
+        "signature": "function characterPayload(row)"
+      },
+      {
+        "id": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 db/classBaseline().",
+          "lang": "javascript"
+        },
+        "idDisplay": "codegraph npm godot-web-rpg-server 1.0.0 db/classBaseline().",
+        "name": "classBaseline",
+        "kind": "function",
+        "file": "db.js",
+        "line": 216,
+        "signature": "function classBaseline(classType)"
+      },
+      {
+        "id": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 db/getFullInventory().",
+          "lang": "javascript"
+        },
+        "idDisplay": "codegraph npm godot-web-rpg-server 1.0.0 db/getFullInventory().",
+        "name": "getFullInventory",
+        "kind": "function",
+        "file": "db.js",
+        "line": 370,
+        "signature": "function getFullInventory(userId)"
+      },
+      {
+        "id": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 db/grantLevelPoints().",
+          "lang": "javascript"
+        },
+        "idDisplay": "codegraph npm godot-web-rpg-server 1.0.0 db/grantLevelPoints().",
+        "name": "grantLevelPoints",
+        "kind": "function",
+        "file": "db.js",
+        "line": 274,
+        "signature": "function grantLevelPoints(userId, reportedLevel)"
+      },
+      {
+        "id": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 db/hashPassword().",
+          "lang": "javascript"
+        },
+        "idDisplay": "codegraph npm godot-web-rpg-server 1.0.0 db/hashPassword().",
+        "name": "hashPassword",
+        "kind": "function",
+        "file": "db.js",
+        "line": 70,
+        "signature": "function hashPassword(password, salt)"
+      },
+      {
+        "id": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 db/loginUser().",
+          "lang": "javascript"
+        },
+        "idDisplay": "codegraph npm godot-web-rpg-server 1.0.0 db/loginUser().",
+        "name": "loginUser",
+        "kind": "function",
+        "file": "db.js",
+        "line": 124,
+        "signature": "function loginUser(username, password)"
+      },
+      {
+        "id": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 db/reconcileStatPoints().",
+          "lang": "javascript"
+        },
+        "idDisplay": "codegraph npm godot-web-rpg-server 1.0.0 db/reconcileStatPoints().",
+        "name": "reconcileStatPoints",
+        "kind": "function",
+        "file": "db.js",
+        "line": 228,
+        "signature": "function reconcileStatPoints(userId)"
+      },
+      {
+        "id": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 db/registerUser().",
+          "lang": "javascript"
+        },
+        "idDisplay": "codegraph npm godot-web-rpg-server 1.0.0 db/registerUser().",
+        "name": "registerUser",
+        "kind": "function",
+        "file": "db.js",
+        "line": 74,
+        "signature": "function registerUser(username, password, classType = 'warrior', skin = null)"
+      },
+      {
+        "id": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 db/saveCharacter().",
+          "lang": "javascript"
+        },
+        "idDisplay": "codegraph npm godot-web-rpg-server 1.0.0 db/saveCharacter().",
+        "name": "saveCharacter",
+        "kind": "function",
+        "file": "db.js",
+        "line": 186,
+        "signature": "function saveCharacter(userId, charData)"
+      },
+      {
+        "id": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 db/useInventoryItem().",
+          "lang": "javascript"
+        },
+        "idDisplay": "codegraph npm godot-web-rpg-server 1.0.0 db/useInventoryItem().",
+        "name": "useInventoryItem",
+        "kind": "function",
+        "file": "db.js",
+        "line": 345,
+        "signature": "function useInventoryItem(userId, slotIndex)"
+      },
+      {
+        "id": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 serve_web/",
+          "lang": "javascript"
+        },
+        "idDisplay": "codegraph npm godot-web-rpg-server 1.0.0 serve_web/",
+        "name": "serve_web",
+        "kind": "module",
+        "file": "serve_web.js",
+        "line": 1,
+        "signature": ""
+      },
+      {
+        "id": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 serve_web/DIST_DIR.",
+          "lang": "javascript"
+        },
+        "idDisplay": "codegraph npm godot-web-rpg-server 1.0.0 serve_web/DIST_DIR.",
+        "name": "DIST_DIR",
+        "kind": "const",
+        "file": "serve_web.js",
+        "line": 11,
+        "signature": "const DIST_DIR = path.resolve(__dirname, '../dist');"
+      },
+      {
+        "id": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 serve_web/MIME_TYPES.",
+          "lang": "javascript"
+        },
+        "idDisplay": "codegraph npm godot-web-rpg-server 1.0.0 serve_web/MIME_TYPES.",
+        "name": "MIME_TYPES",
+        "kind": "const",
+        "file": "serve_web.js",
+        "line": 13,
+        "signature": "const MIME_TYPES ="
+      },
+      {
+        "id": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 serve_web/PORT.",
+          "lang": "javascript"
+        },
+        "idDisplay": "codegraph npm godot-web-rpg-server 1.0.0 serve_web/PORT.",
+        "name": "PORT",
+        "kind": "const",
+        "file": "serve_web.js",
+        "line": 10,
+        "signature": "const PORT = process.env.WEB_PORT || 8080;"
+      },
+      {
+        "id": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 serve_web/fs.",
+          "lang": "javascript"
+        },
+        "idDisplay": "codegraph npm godot-web-rpg-server 1.0.0 serve_web/fs.",
+        "name": "fs",
+        "kind": "const",
+        "file": "serve_web.js",
+        "line": 7,
+        "signature": "const fs = require('fs');"
+      },
+      {
+        "id": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 serve_web/http.",
+          "lang": "javascript"
+        },
+        "idDisplay": "codegraph npm godot-web-rpg-server 1.0.0 serve_web/http.",
+        "name": "http",
+        "kind": "const",
+        "file": "serve_web.js",
+        "line": 6,
+        "signature": "const http = require('http');"
+      },
+      {
+        "id": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 serve_web/path.",
+          "lang": "javascript"
+        },
+        "idDisplay": "codegraph npm godot-web-rpg-server 1.0.0 serve_web/path.",
+        "name": "path",
+        "kind": "const",
+        "file": "serve_web.js",
+        "line": 8,
+        "signature": "const path = require('path');"
+      },
+      {
+        "id": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 serve_web/server.",
+          "lang": "javascript"
+        },
+        "idDisplay": "codegraph npm godot-web-rpg-server 1.0.0 serve_web/server.",
+        "name": "server",
+        "kind": "const",
+        "file": "serve_web.js",
+        "line": 26,
+        "signature": "const server = http.createServer((req, res) => {"
+      },
+      {
+        "id": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 server/",
+          "lang": "javascript"
+        },
+        "idDisplay": "codegraph npm godot-web-rpg-server 1.0.0 server/",
+        "name": "server",
+        "kind": "module",
+        "file": "server.js",
+        "line": 1,
+        "signature": ""
+      },
+      {
+        "id": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 server/DIST_DIR.",
+          "lang": "javascript"
+        },
+        "idDisplay": "codegraph npm godot-web-rpg-server 1.0.0 server/DIST_DIR.",
+        "name": "DIST_DIR",
+        "kind": "const",
+        "file": "server.js",
+        "line": 14,
+        "signature": "const DIST_DIR = path.resolve(__dirname, '../dist');"
+      },
+      {
+        "id": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 server/MIME_TYPES.",
+          "lang": "javascript"
+        },
+        "idDisplay": "codegraph npm godot-web-rpg-server 1.0.0 server/MIME_TYPES.",
+        "name": "MIME_TYPES",
+        "kind": "const",
+        "file": "server.js",
+        "line": 16,
+        "signature": "const MIME_TYPES ="
+      },
+      {
+        "id": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 server/PORT.",
+          "lang": "javascript"
+        },
+        "idDisplay": "codegraph npm godot-web-rpg-server 1.0.0 server/PORT.",
+        "name": "PORT",
+        "kind": "const",
+        "file": "server.js",
+        "line": 13,
+        "signature": "const PORT = process.env.PORT || 8080;"
+      },
+      {
+        "id": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 server/db.",
+          "lang": "javascript"
+        },
+        "idDisplay": "codegraph npm godot-web-rpg-server 1.0.0 server/db.",
+        "name": "db",
+        "kind": "const",
+        "file": "server.js",
+        "line": 11,
+        "signature": "const db = require('./db');"
+      },
+      {
+        "id": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 server/fs.",
+          "lang": "javascript"
+        },
+        "idDisplay": "codegraph npm godot-web-rpg-server 1.0.0 server/fs.",
+        "name": "fs",
+        "kind": "const",
+        "file": "server.js",
+        "line": 8,
+        "signature": "const fs = require('fs');"
+      },
+      {
+        "id": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 server/hostClientId.",
+          "lang": "javascript"
+        },
+        "idDisplay": "codegraph npm godot-web-rpg-server 1.0.0 server/hostClientId.",
+        "name": "hostClientId",
+        "kind": "const",
+        "file": "server.js",
+        "line": 33,
+        "signature": "let hostClientId = null;"
+      },
+      {
+        "id": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 server/http.",
+          "lang": "javascript"
+        },
+        "idDisplay": "codegraph npm godot-web-rpg-server 1.0.0 server/http.",
+        "name": "http",
+        "kind": "const",
+        "file": "server.js",
+        "line": 7,
+        "signature": "const http = require('http');"
+      },
+      {
+        "id": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 server/nextClientId.",
+          "lang": "javascript"
+        },
+        "idDisplay": "codegraph npm godot-web-rpg-server 1.0.0 server/nextClientId.",
+        "name": "nextClientId",
+        "kind": "const",
+        "file": "server.js",
+        "line": 32,
+        "signature": "let nextClientId = 100;"
+      },
+      {
+        "id": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 server/path.",
+          "lang": "javascript"
+        },
+        "idDisplay": "codegraph npm godot-web-rpg-server 1.0.0 server/path.",
+        "name": "path",
+        "kind": "const",
+        "file": "server.js",
+        "line": 9,
+        "signature": "const path = require('path');"
+      },
+      {
+        "id": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 server/players.",
+          "lang": "javascript"
+        },
+        "idDisplay": "codegraph npm godot-web-rpg-server 1.0.0 server/players.",
+        "name": "players",
+        "kind": "const",
+        "file": "server.js",
+        "line": 31,
+        "signature": "const players = new Map();"
+      },
+      {
+        "id": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 server/server.",
+          "lang": "javascript"
+        },
+        "idDisplay": "codegraph npm godot-web-rpg-server 1.0.0 server/server.",
+        "name": "server",
+        "kind": "const",
+        "file": "server.js",
+        "line": 36,
+        "signature": "const server = http.createServer((req, res) => {"
+      },
+      {
+        "id": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 server/wss.",
+          "lang": "javascript"
+        },
+        "idDisplay": "codegraph npm godot-web-rpg-server 1.0.0 server/wss.",
+        "name": "wss",
+        "kind": "const",
+        "file": "server.js",
+        "line": 100,
+        "signature": "const wss = new WebSocketServer({ server });"
+      },
+      {
+        "id": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 server/broadcast().",
+          "lang": "javascript"
+        },
+        "idDisplay": "codegraph npm godot-web-rpg-server 1.0.0 server/broadcast().",
+        "name": "broadcast",
+        "kind": "function",
+        "file": "server.js",
+        "line": 102,
+        "signature": "function broadcast(data, excludeWs = null)"
+      }
+    ],
+    "edges": [
+      {
+        "from": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 server/",
+          "lang": "javascript"
+        },
+        "to": "addInventoryItem",
+        "file": null,
+        "line": null,
+        "kind": null
+      },
+      {
+        "from": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 server/",
+          "lang": "javascript"
+        },
+        "to": "allocateStat",
+        "file": null,
+        "line": null,
+        "kind": null
+      },
+      {
+        "from": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 db/allocateStat().",
+          "lang": "javascript"
+        },
+        "to": "characterPayload",
+        "file": null,
+        "line": null,
+        "kind": null
+      },
+      {
+        "from": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 db/grantLevelPoints().",
+          "lang": "javascript"
+        },
+        "to": "characterPayload",
+        "file": null,
+        "line": null,
+        "kind": null
+      },
+      {
+        "from": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 db/reconcileStatPoints().",
+          "lang": "javascript"
+        },
+        "to": "classBaseline",
+        "file": null,
+        "line": null,
+        "kind": null
+      },
+      {
+        "from": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 db/registerUser().",
+          "lang": "javascript"
+        },
+        "to": "classBaseline",
+        "file": null,
+        "line": null,
+        "kind": null
+      },
+      {
+        "from": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 db/addInventoryItem().",
+          "lang": "javascript"
+        },
+        "to": "getFullInventory",
+        "file": null,
+        "line": null,
+        "kind": null
+      },
+      {
+        "from": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 db/addInventoryItem().",
+          "lang": "javascript"
+        },
+        "to": "getFullInventory",
+        "file": null,
+        "line": null,
+        "kind": null
+      },
+      {
+        "from": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 db/useInventoryItem().",
+          "lang": "javascript"
+        },
+        "to": "getFullInventory",
+        "file": null,
+        "line": null,
+        "kind": null
+      },
+      {
+        "from": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 server/",
+          "lang": "javascript"
+        },
+        "to": "grantLevelPoints",
+        "file": null,
+        "line": null,
+        "kind": null
+      },
+      {
+        "from": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 db/loginUser().",
+          "lang": "javascript"
+        },
+        "to": "hashPassword",
+        "file": null,
+        "line": null,
+        "kind": null
+      },
+      {
+        "from": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 db/registerUser().",
+          "lang": "javascript"
+        },
+        "to": "hashPassword",
+        "file": null,
+        "line": null,
+        "kind": null
+      },
+      {
+        "from": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 db/registerUser().",
+          "lang": "javascript"
+        },
+        "to": "loginUser",
+        "file": null,
+        "line": null,
+        "kind": null
+      },
+      {
+        "from": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 server/",
+          "lang": "javascript"
+        },
+        "to": "loginUser",
+        "file": null,
+        "line": null,
+        "kind": null
+      },
+      {
+        "from": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 db/loginUser().",
+          "lang": "javascript"
+        },
+        "to": "reconcileStatPoints",
+        "file": null,
+        "line": null,
+        "kind": null
+      },
+      {
+        "from": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 server/",
+          "lang": "javascript"
+        },
+        "to": "registerUser",
+        "file": null,
+        "line": null,
+        "kind": null
+      },
+      {
+        "from": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 server/",
+          "lang": "javascript"
+        },
+        "to": "saveCharacter",
+        "file": null,
+        "line": null,
+        "kind": null
+      },
+      {
+        "from": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 server/",
+          "lang": "javascript"
+        },
+        "to": "useInventoryItem",
+        "file": null,
+        "line": null,
+        "kind": null
+      },
+      {
+        "from": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 server/",
+          "lang": "javascript"
+        },
+        "to": "useInventoryItem",
+        "file": null,
+        "line": null,
+        "kind": null
+      },
+      {
+        "from": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 server/",
+          "lang": "javascript"
+        },
+        "to": "broadcast",
+        "file": null,
+        "line": null,
+        "kind": null
+      },
+      {
+        "from": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 server/",
+          "lang": "javascript"
+        },
+        "to": "broadcast",
+        "file": null,
+        "line": null,
+        "kind": null
+      },
+      {
+        "from": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 server/",
+          "lang": "javascript"
+        },
+        "to": "broadcast",
+        "file": null,
+        "line": null,
+        "kind": null
+      },
+      {
+        "from": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 server/",
+          "lang": "javascript"
+        },
+        "to": "broadcast",
+        "file": null,
+        "line": null,
+        "kind": null
+      },
+      {
+        "from": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 server/",
+          "lang": "javascript"
+        },
+        "to": "broadcast",
+        "file": null,
+        "line": null,
+        "kind": null
+      },
+      {
+        "from": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 server/",
+          "lang": "javascript"
+        },
+        "to": "broadcast",
+        "file": null,
+        "line": null,
+        "kind": null
+      },
+      {
+        "from": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 server/",
+          "lang": "javascript"
+        },
+        "to": "broadcast",
+        "file": null,
+        "line": null,
+        "kind": null
+      },
+      {
+        "from": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 server/",
+          "lang": "javascript"
+        },
+        "to": "broadcast",
+        "file": null,
+        "line": null,
+        "kind": null
+      },
+      {
+        "from": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 server/",
+          "lang": "javascript"
+        },
+        "to": "broadcast",
+        "file": null,
+        "line": null,
+        "kind": null
+      },
+      {
+        "from": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 server/",
+          "lang": "javascript"
+        },
+        "to": "broadcast",
+        "file": null,
+        "line": null,
+        "kind": null
+      },
+      {
+        "from": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 server/",
+          "lang": "javascript"
+        },
+        "to": "broadcast",
+        "file": null,
+        "line": null,
+        "kind": null
+      },
+      {
+        "from": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 server/",
+          "lang": "javascript"
+        },
+        "to": "broadcast",
+        "file": null,
+        "line": null,
+        "kind": null
+      },
+      {
+        "from": {
+          "version": 1,
+          "scip": "codegraph npm godot-web-rpg-server 1.0.0 server/",
+          "lang": "javascript"
+        },
+        "to": "broadcast",
+        "file": null,
+        "line": null,
+        "kind": null
+      }
+    ]
+  },
+  "scenes": [
+    {
+      "file": "scenes/loot_drop.tscn",
+      "ext_resources": [
+        "scripts/entities/loot_drop.gd",
+        "assets/sprites/gem_xp.png"
+      ],
+      "nodes": [
+        "LootDrop",
+        "Sprite2D",
+        "CollisionShape2D"
+      ]
+    },
+    {
+      "file": "scenes/main.tscn",
+      "ext_resources": [
+        "scenes/world.tscn",
+        "scripts/ui/hud.gd",
+        "scripts/ui/chat_box.gd",
+        "scripts/ui/lobby_ui.gd",
+        "scripts/ui/stats_panel.gd",
+        "scripts/ui/inventory_ui.gd",
+        "assets/ui/rpg_theme.tres",
+        "scripts/ui/minimap.gd"
+      ],
+      "nodes": [
+        "Main",
+        "World",
+        "HUD",
+        "TopLeft",
+        "VBoxContainer",
+        "LevelLabel",
+        "HBoxHP",
+        "HPBar",
+        "HPLabel",
+        "HBoxEnergy",
+        "EnergyBar",
+        "EnergyLabel",
+        "HBoxXP",
+        "XPBar",
+        "XPLabel",
+        "HBoxButtons",
+        "StatsBtn",
+        "BagBtn",
+        "MiniMap",
+        "Canvas",
+        "TopRight",
+        "Panel",
+        "VBox",
+        "OnlineCount",
+        "PlayerList",
+        "SkillBar",
+        "Skill1Btn",
+        "Skill2Btn",
+        "Skill3Btn",
+        "ControlsHint",
+        "ChatBox",
+        "TabToggleBtn",
+        "PanelContainer",
+        "VBoxContainer",
+        "ChatLog",
+        "InputHBox",
+        "MessageInput",
+        "SendBtn",
+        "StatsPanel",
+        "VBox",
+        "Title",
+        "ClassLabel",
+        "HSeparator",
+        "Grid",
+        "STRRow",
+        "Name",
+        "Val",
+        "Btn",
+        "VITRow",
+        "Name",
+        "Val",
+        "Btn",
+        "AGIRow",
+        "Name",
+        "Val",
+        "Btn",
+        "INTRow",
+        "Name",
+        "Val",
+        "Btn",
+        "DerivedLabel",
+        "PointsLabel",
+        "CloseBtn",
+        "InventoryUI",
+        "VBox",
+        "Title",
+        "HSeparator",
+        "Grid",
+        "InfoLabel",
+        "CloseBtn",
+        "LobbyLayer",
+        "LobbyUI",
+        "ColorRect",
+        "Panel",
+        "VBox",
+        "Title",
+        "Subtitle",
+        "HSeparator",
+        "UserLabel",
+        "UserInput",
+        "PassLabel",
+        "PassInput",
+        "ClassLabel",
+        "ClassOption",
+        "ButtonsHBox",
+        "LoginBtn",
+        "RegisterBtn",
+        "GuestBtn",
+        "AddressLabel",
+        "AddressInput",
+        "StatusLabel"
+      ]
+    },
+    {
+      "file": "scenes/monster.tscn",
+      "ext_resources": [
+        "scripts/entities/monster.gd",
+        "assets/spriteframes/slime.tres"
+      ],
+      "nodes": [
+        "Monster",
+        "Sprite2D",
+        "CollisionShape2D",
+        "UI",
+        "NameLabel",
+        "HealthBar",
+        "AnimationPlayer"
+      ]
+    },
+    {
+      "file": "scenes/player.tscn",
+      "ext_resources": [
+        "scripts/entities/player.gd",
+        "assets/spriteframes/player_blue.tres",
+        "assets/sprites/slash.png"
+      ],
+      "nodes": [
+        "Player",
+        "Sprite2D",
+        "SlashSprite",
+        "CollisionShape2D",
+        "Camera2D",
+        "AttackArea",
+        "CollisionShape2D",
+        "UI",
+        "NameLabel",
+        "HealthBar",
+        "AnimationPlayer"
+      ]
+    },
+    {
+      "file": "scenes/projectile.tscn",
+      "ext_resources": [
+        "scripts/entities/projectile.gd",
+        "assets/sprites/projectile.png"
+      ],
+      "nodes": [
+        "Projectile",
+        "Sprite2D",
+        "CollisionShape2D"
+      ]
+    },
+    {
+      "file": "scenes/world.tscn",
+      "ext_resources": [
+        "scripts/world.gd",
+        "assets/sprites/tile_wall.png",
+        "assets/tilesets/terrain.tres"
+      ],
+      "nodes": [
+        "World",
+        "Map",
+        "Ground",
+        "Detail",
+        "Borders",
+        "WallTop",
+        "WallBottom",
+        "WallLeft",
+        "WallRight",
+        "Obstacles",
+        "Pillar1",
+        "Sprite1",
+        "Pillar2",
+        "Sprite2",
+        "Pillar3",
+        "Sprite3",
+        "Pillar4",
+        "Sprite4",
+        "Loot",
+        "Monsters",
+        "Players"
+      ]
+    },
+    {
+      "file": "tests/test_runner.tscn",
+      "ext_resources": [
+        "tests/run_game_tests.gd"
+      ],
+      "nodes": [
+        "TestRunner"
+      ]
+    }
+  ],
+  "gd_edges": [
+    {
+      "from": "scripts/classes/archer_class.gd",
+      "to": "scenes/projectile.tscn",
+      "line": 31,
+      "kind": "load"
+    },
+    {
+      "from": "scripts/classes/hero_class.gd",
+      "to": "scripts/classes/mage_class.gd",
+      "line": 50,
+      "kind": "load"
+    },
+    {
+      "from": "scripts/classes/hero_class.gd",
+      "to": "scripts/classes/archer_class.gd",
+      "line": 53,
+      "kind": "load"
+    },
+    {
+      "from": "scripts/classes/hero_class.gd",
+      "to": "scripts/classes/warrior_class.gd",
+      "line": 56,
+      "kind": "load"
+    },
+    {
+      "from": "scripts/classes/mage_class.gd",
+      "to": "scenes/projectile.tscn",
+      "line": 29,
+      "kind": "load"
+    },
+    {
+      "from": "scripts/classes/warrior_class.gd",
+      "to": "scripts/ui/floating_text.gd",
+      "line": 4,
+      "kind": "load"
+    },
+    {
+      "from": "scripts/classes/warrior_class.gd",
+      "to": "scripts/combat/combat_formula.gd",
+      "line": 5,
+      "kind": "load"
+    },
+    {
+      "from": "scripts/entities/entity.gd",
+      "to": "scripts/ui/floating_text.gd",
+      "line": 4,
+      "kind": "load"
+    },
+    {
+      "from": "scripts/entities/entity.gd",
+      "to": "scripts/combat/combat_formula.gd",
+      "line": 5,
+      "kind": "load"
+    },
+    {
+      "from": "scripts/entities/loot_drop.gd",
+      "to": "assets/sprites/gem_xp.png",
+      "line": 23,
+      "kind": "load"
+    },
+    {
+      "from": "scripts/entities/loot_drop.gd",
+      "to": "assets/sprites/potion_hp.png",
+      "line": 26,
+      "kind": "load"
+    },
+    {
+      "from": "scripts/entities/loot_drop.gd",
+      "to": "assets/sprites/potion_hp.png",
+      "line": 29,
+      "kind": "load"
+    },
+    {
+      "from": "scripts/entities/loot_drop.gd",
+      "to": "assets/sprites/slash.png",
+      "line": 32,
+      "kind": "load"
+    },
+    {
+      "from": "scripts/entities/loot_drop.gd",
+      "to": "assets/sprites/potion_hp.png",
+      "line": 35,
+      "kind": "load"
+    },
+    {
+      "from": "scripts/entities/loot_drop.gd",
+      "to": "assets/sprites/projectile.png",
+      "line": 38,
+      "kind": "load"
+    },
+    {
+      "from": "scripts/entities/loot_drop.gd",
+      "to": "assets/sprites/gem_xp.png",
+      "line": 41,
+      "kind": "load"
+    },
+    {
+      "from": "scripts/entities/monster.gd",
+      "to": "scripts/items/item_database.gd",
+      "line": 7,
+      "kind": "load"
+    },
+    {
+      "from": "scripts/entities/monster.gd",
+      "to": "assets/spriteframes/slime_king.tres",
+      "line": 70,
+      "kind": "load"
+    },
+    {
+      "from": "scripts/entities/monster.gd",
+      "to": "scenes/loot_drop.tscn",
+      "line": 377,
+      "kind": "load"
+    },
+    {
+      "from": "scripts/entities/player.gd",
+      "to": "scripts/classes/hero_class.gd",
+      "line": 4,
+      "kind": "load"
+    },
+    {
+      "from": "scripts/network/network_manager.gd",
+      "to": "scenes/player.tscn",
+      "line": 26,
+      "kind": "load"
+    },
+    {
+      "from": "scripts/network/network_manager.gd",
+      "to": "scenes/projectile.tscn",
+      "line": 392,
+      "kind": "load"
+    },
+    {
+      "from": "scripts/ui/floating_text.gd",
+      "to": "scripts/ui/floating_text.gd",
+      "line": 11,
+      "kind": "load"
+    },
+    {
+      "from": "scripts/world.gd",
+      "to": "scenes/monster.tscn",
+      "line": 6,
+      "kind": "load"
+    },
+    {
+      "from": "tests/run_game_tests.gd",
+      "to": "scripts/combat/combat_formula.gd",
+      "line": 3,
+      "kind": "load"
+    },
+    {
+      "from": "tests/run_game_tests.gd",
+      "to": "scripts/items/item_database.gd",
+      "line": 4,
+      "kind": "load"
+    },
+    {
+      "from": "tests/run_game_tests.gd",
+      "to": "scripts/classes/hero_class.gd",
+      "line": 5,
+      "kind": "load"
+    },
+    {
+      "from": "tests/run_game_tests.gd",
+      "to": "scripts/classes/warrior_class.gd",
+      "line": 6,
+      "kind": "load"
+    },
+    {
+      "from": "tests/run_game_tests.gd",
+      "to": "scripts/classes/mage_class.gd",
+      "line": 7,
+      "kind": "load"
+    },
+    {
+      "from": "tests/run_game_tests.gd",
+      "to": "scripts/classes/archer_class.gd",
+      "line": 8,
+      "kind": "load"
+    },
+    {
+      "from": "tests/run_game_tests.gd",
+      "to": "scenes/world.tscn",
+      "line": 90,
+      "kind": "load"
+    },
+    {
+      "from": "tests/run_game_tests.gd",
+      "to": "scenes/monster.tscn",
+      "line": 113,
+      "kind": "load"
+    },
+    {
+      "from": "tests/run_game_tests.gd",
+      "to": "scenes/player.tscn",
+      "line": 114,
+      "kind": "load"
+    },
+    {
+      "from": "tests/run_game_tests.gd",
+      "to": "scenes/monster.tscn",
+      "line": 142,
+      "kind": "load"
+    },
+    {
+      "from": "tests/run_game_tests.gd",
+      "to": "scenes/player.tscn",
+      "line": 143,
+      "kind": "load"
+    },
+    {
+      "from": "tests/run_game_tests.gd",
+      "to": "scenes/monster.tscn",
+      "line": 176,
+      "kind": "load"
+    },
+    {
+      "from": "tests/run_game_tests.gd",
+      "to": "scenes/player.tscn",
+      "line": 177,
+      "kind": "load"
+    },
+    {
+      "from": "tests/run_game_tests.gd",
+      "to": "scenes/world.tscn",
+      "line": 234,
+      "kind": "load"
+    },
+    {
+      "from": "tests/run_game_tests.gd",
+      "to": "scenes/world.tscn",
+      "line": 306,
+      "kind": "load"
+    },
+    {
+      "from": "tests/run_game_tests.gd",
+      "to": "scenes/monster.tscn",
+      "line": 367,
+      "kind": "load"
+    },
+    {
+      "from": "tests/run_game_tests.gd",
+      "to": "scenes/player.tscn",
+      "line": 368,
+      "kind": "load"
+    },
+    {
+      "from": "tests/run_game_tests.gd",
+      "to": "scenes/player.tscn",
+      "line": 423,
+      "kind": "load"
+    },
+    {
+      "from": "tests/run_game_tests.gd",
+      "to": "scenes/projectile.tscn",
+      "line": 424,
+      "kind": "load"
+    },
+    {
+      "from": "tests/run_game_tests.gd",
+      "to": "scenes/player.tscn",
+      "line": 447,
+      "kind": "load"
+    },
+    {
+      "from": "tests/run_game_tests.gd",
+      "to": "scenes/player.tscn",
+      "line": 467,
+      "kind": "load"
+    },
+    {
+      "from": "tests/run_game_tests.gd",
+      "to": "scenes/monster.tscn",
+      "line": 485,
+      "kind": "load"
+    },
+    {
+      "from": "tests/run_game_tests.gd",
+      "to": "scenes/loot_drop.tscn",
+      "line": 511,
+      "kind": "load"
+    },
+    {
+      "from": "tests/run_game_tests.gd",
+      "to": "scenes/player.tscn",
+      "line": 549,
+      "kind": "load"
+    },
+    {
+      "from": "tests/run_game_tests.gd",
+      "to": "scenes/player.tscn",
+      "line": 579,
+      "kind": "load"
+    },
+    {
+      "from": "tests/run_game_tests.gd",
+      "to": "scenes/player.tscn",
+      "line": 606,
+      "kind": "load"
+    },
+    {
+      "from": "tests/run_game_tests.gd",
+      "to": "scenes/monster.tscn",
+      "line": 607,
+      "kind": "load"
+    },
+    {
+      "from": "tests/run_game_tests.gd",
+      "to": "scenes/player.tscn",
+      "line": 642,
+      "kind": "load"
+    },
+    {
+      "from": "tests/run_game_tests.gd",
+      "to": "scenes/player.tscn",
+      "line": 700,
+      "kind": "load"
+    },
+    {
+      "from": "tests/run_game_tests.gd",
+      "to": "scenes/player.tscn",
+      "line": 722,
+      "kind": "load"
+    },
+    {
+      "from": "tests/run_game_tests.gd",
+      "to": "scenes/monster.tscn",
+      "line": 723,
+      "kind": "load"
+    }
+  ]
+}

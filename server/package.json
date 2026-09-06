@@ -1,0 +1,14 @@
+{
+  "name": "godot-web-rpg-server",
+  "version": "1.0.0",
+  "description": "Lightweight WebSocket server and local web host for Godot Web Online RPG POC",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "serve": "node serve_web.js",
+    "dev": "node server.js & node serve_web.js"
+  },
+  "dependencies": {
+    "ws": "^8.21.3"
+  }
+}

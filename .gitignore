@@ -1,0 +1,14 @@
+# Godot 4
+.godot/
+bin/
+
+# Node
+node_modules/
+server/node_modules/
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Obsidian per-user state (shared config in wiki/.obsidian/ stays tracked)
+wiki/.obsidian/workspace.json

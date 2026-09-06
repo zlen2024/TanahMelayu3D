@@ -1,0 +1,552 @@
+[gd_scene load_steps=12 format=3 uid="uid://cmain01scene"]
+
+[ext_resource type="PackedScene" path="res://scenes/world.tscn" id="1_world"]
+[ext_resource type="Script" path="res://scripts/ui/hud.gd" id="2_hud"]
+[ext_resource type="Script" path="res://scripts/ui/chat_box.gd" id="3_chat"]
+[ext_resource type="Script" path="res://scripts/ui/lobby_ui.gd" id="4_lobby"]
+[ext_resource type="Script" path="res://scripts/ui/stats_panel.gd" id="5_stats"]
+[ext_resource type="Script" path="res://scripts/ui/inventory_ui.gd" id="6_inv"]
+[ext_resource type="Theme" path="res://assets/ui/rpg_theme.tres" id="7_theme"]
+[ext_resource type="Script" path="res://scripts/ui/minimap.gd" id="8_minimap"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hpfill"]
+bg_color = Color(0.85, 0.15, 0.15, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_enfill"]
+bg_color = Color(0.15, 0.55, 0.95, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xpfill"]
+bg_color = Color(0.2, 0.8, 0.4, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[node name="Main" type="Node"]
+
+[node name="World" parent="." instance=ExtResource("1_world")]
+
+[node name="HUD" type="CanvasLayer" parent="."]
+script = ExtResource("2_hud")
+
+[node name="TopLeft" type="Control" parent="HUD"]
+theme = ExtResource("7_theme")
+layout_mode = 3
+anchors_preset = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 280.0
+offset_bottom = 150.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/TopLeft"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 4
+
+[node name="LevelLabel" type="Label" parent="HUD/TopLeft/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.3, 1)
+theme_override_font_sizes/font_size = 17
+text = "Level 1 Hero"
+
+[node name="HBoxHP" type="HBoxContainer" parent="HUD/TopLeft/VBoxContainer"]
+layout_mode = 2
+
+[node name="HPBar" type="ProgressBar" parent="HUD/TopLeft/VBoxContainer/HBoxHP"]
+custom_minimum_size = Vector2(160, 14)
+layout_mode = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_hpfill")
+value = 150.0
+max_value = 150.0
+show_percentage = false
+
+[node name="HPLabel" type="Label" parent="HUD/TopLeft/VBoxContainer/HBoxHP"]
+layout_mode = 2
+text = "150 / 150"
+
+[node name="HBoxEnergy" type="HBoxContainer" parent="HUD/TopLeft/VBoxContainer"]
+layout_mode = 2
+
+[node name="EnergyBar" type="ProgressBar" parent="HUD/TopLeft/VBoxContainer/HBoxEnergy"]
+custom_minimum_size = Vector2(160, 12)
+layout_mode = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_enfill")
+value = 80.0
+max_value = 80.0
+show_percentage = false
+
+[node name="EnergyLabel" type="Label" parent="HUD/TopLeft/VBoxContainer/HBoxEnergy"]
+layout_mode = 2
+text = "80 / 80"
+
+[node name="HBoxXP" type="HBoxContainer" parent="HUD/TopLeft/VBoxContainer"]
+layout_mode = 2
+
+[node name="XPBar" type="ProgressBar" parent="HUD/TopLeft/VBoxContainer/HBoxXP"]
+custom_minimum_size = Vector2(160, 10)
+layout_mode = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_xpfill")
+value = 0.0
+show_percentage = false
+
+[node name="XPLabel" type="Label" parent="HUD/TopLeft/VBoxContainer/HBoxXP"]
+layout_mode = 2
+text = "0 / 40 XP"
+
+[node name="HBoxButtons" type="HBoxContainer" parent="HUD/TopLeft/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="StatsBtn" type="Button" parent="HUD/TopLeft/VBoxContainer/HBoxButtons"]
+layout_mode = 2
+text = "Stats [C]"
+
+[node name="BagBtn" type="Button" parent="HUD/TopLeft/VBoxContainer/HBoxButtons"]
+layout_mode = 2
+text = "Bag [B]"
+
+[node name="MiniMap" type="PanelContainer" parent="HUD"]
+theme = ExtResource("7_theme")
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -190.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 190.0
+grow_horizontal = 0
+
+[node name="Canvas" type="Control" parent="HUD/MiniMap"]
+layout_mode = 2
+script = ExtResource("8_minimap")
+
+[node name="TopRight" type="Control" parent="HUD"]
+theme = ExtResource("7_theme")
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -196.0
+offset_top = 206.0
+offset_right = -16.0
+offset_bottom = 350.0
+grow_horizontal = 0
+
+[node name="Panel" type="PanelContainer" parent="HUD/TopRight"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="HUD/TopRight/Panel"]
+layout_mode = 2
+
+[node name="OnlineCount" type="Label" parent="HUD/TopRight/Panel/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 0.9, 0.5, 1)
+text = "Online Heroes: 1"
+
+[node name="PlayerList" type="ItemList" parent="HUD/TopRight/Panel/VBox"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SkillBar" type="HBoxContainer" parent="HUD"]
+theme = ExtResource("7_theme")
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -160.0
+offset_top = -78.0
+offset_right = 160.0
+offset_bottom = -38.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Skill1Btn" type="Button" parent="HUD/SkillBar"]
+custom_minimum_size = Vector2(96, 38)
+layout_mode = 2
+text = "[1] Charge\n(15 MP)"
+
+[node name="Skill2Btn" type="Button" parent="HUD/SkillBar"]
+custom_minimum_size = Vector2(96, 38)
+layout_mode = 2
+text = "[2] Whirlwind\n(22 MP)"
+
+[node name="Skill3Btn" type="Button" parent="HUD/SkillBar"]
+custom_minimum_size = Vector2(96, 38)
+layout_mode = 2
+text = "[3] Iron Will\n(20 MP)"
+
+[node name="ControlsHint" type="Label" parent="HUD"]
+theme = ExtResource("7_theme")
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -280.0
+offset_top = -28.0
+offset_right = 280.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 0.8)
+text = "[WASD]: Move | [Space]: Attack | [1/2/3]: Skills | [C]: Stats | [B]: Bag | [Enter]: Chat"
+horizontal_alignment = 1
+
+[node name="ChatBox" type="Control" parent="HUD"]
+theme = ExtResource("7_theme")
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -216.0
+offset_right = 330.0
+offset_bottom = -34.0
+grow_vertical = 0
+script = ExtResource("3_chat")
+
+[node name="TabToggleBtn" type="Button" parent="HUD/ChatBox"]
+layout_mode = 0
+offset_left = 0.0
+offset_top = -25.0
+offset_right = 100.0
+offset_bottom = -1.0
+text = "[-] Chat"
+
+[node name="PanelContainer" type="PanelContainer" parent="HUD/ChatBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/ChatBox/PanelContainer"]
+layout_mode = 2
+
+[node name="ChatLog" type="RichTextLabel" parent="HUD/ChatBox/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+scroll_following = true
+
+[node name="InputHBox" type="HBoxContainer" parent="HUD/ChatBox/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MessageInput" type="LineEdit" parent="HUD/ChatBox/PanelContainer/VBoxContainer/InputHBox"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Type message..."
+
+[node name="SendBtn" type="Button" parent="HUD/ChatBox/PanelContainer/VBoxContainer/InputHBox"]
+layout_mode = 2
+text = "Send"
+
+[node name="StatsPanel" type="PanelContainer" parent="HUD"]
+theme = ExtResource("7_theme")
+custom_minimum_size = Vector2(280, 240)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -140.0
+offset_top = -120.0
+offset_right = 140.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_stats")
+
+[node name="VBox" type="VBoxContainer" parent="HUD/StatsPanel"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="HUD/StatsPanel/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.3, 1)
+theme_override_font_sizes/font_size = 22
+text = "Hero Attributes"
+horizontal_alignment = 1
+
+[node name="ClassLabel" type="Label" parent="HUD/StatsPanel/VBox"]
+layout_mode = 2
+text = "Class: Warrior  |  Points: 0"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="HUD/StatsPanel/VBox"]
+layout_mode = 2
+
+[node name="Grid" type="VBoxContainer" parent="HUD/StatsPanel/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="STRRow" type="HBoxContainer" parent="HUD/StatsPanel/VBox/Grid"]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="HUD/StatsPanel/VBox/Grid/STRRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "STR (Strength):"
+
+[node name="Val" type="Label" parent="HUD/StatsPanel/VBox/Grid/STRRow"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "10"
+
+[node name="Btn" type="Button" parent="HUD/StatsPanel/VBox/Grid/STRRow"]
+custom_minimum_size = Vector2(24, 20)
+layout_mode = 2
+text = "+"
+
+[node name="VITRow" type="HBoxContainer" parent="HUD/StatsPanel/VBox/Grid"]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="HUD/StatsPanel/VBox/Grid/VITRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "VIT (Vitality):"
+
+[node name="Val" type="Label" parent="HUD/StatsPanel/VBox/Grid/VITRow"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "10"
+
+[node name="Btn" type="Button" parent="HUD/StatsPanel/VBox/Grid/VITRow"]
+custom_minimum_size = Vector2(24, 20)
+layout_mode = 2
+text = "+"
+
+[node name="AGIRow" type="HBoxContainer" parent="HUD/StatsPanel/VBox/Grid"]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="HUD/StatsPanel/VBox/Grid/AGIRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "AGI (Agility):"
+
+[node name="Val" type="Label" parent="HUD/StatsPanel/VBox/Grid/AGIRow"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "10"
+
+[node name="Btn" type="Button" parent="HUD/StatsPanel/VBox/Grid/AGIRow"]
+custom_minimum_size = Vector2(24, 20)
+layout_mode = 2
+text = "+"
+
+[node name="INTRow" type="HBoxContainer" parent="HUD/StatsPanel/VBox/Grid"]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="HUD/StatsPanel/VBox/Grid/INTRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "INT (Intelligence):"
+
+[node name="Val" type="Label" parent="HUD/StatsPanel/VBox/Grid/INTRow"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "10"
+
+[node name="Btn" type="Button" parent="HUD/StatsPanel/VBox/Grid/INTRow"]
+custom_minimum_size = Vector2(24, 20)
+layout_mode = 2
+text = "+"
+
+[node name="DerivedLabel" type="Label" parent="HUD/StatsPanel/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.8, 0.9, 1)
+text = "Max HP: 150  |  Energy: 80  |  Speed: 175"
+horizontal_alignment = 1
+
+[node name="PointsLabel" type="Label" parent="HUD/StatsPanel/VBox"]
+visible = false
+layout_mode = 2
+text = "0"
+
+[node name="CloseBtn" type="Button" parent="HUD/StatsPanel/VBox"]
+layout_mode = 2
+text = "Close [C]"
+
+[node name="InventoryUI" type="PanelContainer" parent="HUD"]
+theme = ExtResource("7_theme")
+custom_minimum_size = Vector2(260, 260)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -130.0
+offset_top = -130.0
+offset_right = 130.0
+offset_bottom = 130.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_inv")
+
+[node name="VBox" type="VBoxContainer" parent="HUD/InventoryUI"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Title" type="Label" parent="HUD/InventoryUI/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.3, 1)
+theme_override_font_sizes/font_size = 22
+text = "Hero's Bag"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="HUD/InventoryUI/VBox"]
+layout_mode = 2
+
+[node name="Grid" type="GridContainer" parent="HUD/InventoryUI/VBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+columns = 4
+
+[node name="InfoLabel" type="Label" parent="HUD/InventoryUI/VBox"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.8, 0.9, 1)
+text = "Hover an item to view info"
+horizontal_alignment = 1
+
+[node name="CloseBtn" type="Button" parent="HUD/InventoryUI/VBox"]
+layout_mode = 2
+text = "Close [B]"
+
+[node name="LobbyLayer" type="CanvasLayer" parent="."]
+layer = 10
+
+[node name="LobbyUI" type="Control" parent="LobbyLayer"]
+theme = ExtResource("7_theme")
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_lobby")
+
+[node name="ColorRect" type="ColorRect" parent="LobbyLayer/LobbyUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.04, 0.06, 0.08, 0.88)
+
+[node name="Panel" type="PanelContainer" parent="LobbyLayer/LobbyUI"]
+custom_minimum_size = Vector2(380, 400)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -190.0
+offset_top = -200.0
+offset_right = 190.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="LobbyLayer/LobbyUI/Panel"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="LobbyLayer/LobbyUI/Panel/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.84, 0.2, 1)
+theme_override_font_sizes/font_size = 22
+text = "== GODOT WEB ONLINE RPG =="
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="LobbyLayer/LobbyUI/Panel/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
+text = "Warrior | Mage | Archer - Multiplayer POC"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="LobbyLayer/LobbyUI/Panel/VBox"]
+layout_mode = 2
+
+[node name="UserLabel" type="Label" parent="LobbyLayer/LobbyUI/Panel/VBox"]
+layout_mode = 2
+text = "Username:"
+
+[node name="UserInput" type="LineEdit" parent="LobbyLayer/LobbyUI/Panel/VBox"]
+layout_mode = 2
+placeholder_text = "Enter username"
+
+[node name="PassLabel" type="Label" parent="LobbyLayer/LobbyUI/Panel/VBox"]
+layout_mode = 2
+text = "Password:"
+
+[node name="PassInput" type="LineEdit" parent="LobbyLayer/LobbyUI/Panel/VBox"]
+layout_mode = 2
+secret = true
+placeholder_text = "Enter password"
+
+[node name="ClassLabel" type="Label" parent="LobbyLayer/LobbyUI/Panel/VBox"]
+layout_mode = 2
+text = "Hero Class (for Registration):"
+
+[node name="ClassOption" type="OptionButton" parent="LobbyLayer/LobbyUI/Panel/VBox"]
+layout_mode = 2
+
+[node name="ButtonsHBox" type="HBoxContainer" parent="LobbyLayer/LobbyUI/Panel/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="LoginBtn" type="Button" parent="LobbyLayer/LobbyUI/Panel/VBox/ButtonsHBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Login"
+
+[node name="RegisterBtn" type="Button" parent="LobbyLayer/LobbyUI/Panel/VBox/ButtonsHBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Register"
+
+[node name="GuestBtn" type="Button" parent="LobbyLayer/LobbyUI/Panel/VBox"]
+layout_mode = 2
+text = "Play as Guest (Solo)"
+
+[node name="AddressLabel" type="Label" parent="LobbyLayer/LobbyUI/Panel/VBox"]
+layout_mode = 2
+text = "Server Address:"
+
+[node name="AddressInput" type="LineEdit" parent="LobbyLayer/LobbyUI/Panel/VBox"]
+layout_mode = 2
+text = "ws://127.0.0.1:8080"
+placeholder_text = "ws://127.0.0.1:8080"
+
+[node name="StatusLabel" type="Label" parent="LobbyLayer/LobbyUI/Panel/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.8, 1, 1)
+text = "Connecting to server..."
+horizontal_alignment = 1
