@@ -2,6 +2,11 @@
 .godot/
 bin/
 
+# Web export output (~43MB, regenerate with tools/build_web.ps1).
+# NOTE: a git-only deploy will 404 on every asset while /health still answers.
+# Build on the host, or ship dist/ out of band.
+dist/
+
 # Node
 node_modules/
 server/node_modules/

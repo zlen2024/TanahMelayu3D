@@ -87,14 +87,12 @@ so detection is a one-liner and no build-time server address is baked in.
 `npm install`, start `node server.js`. The service must serve `dist/`, so
 `dist/` has to be present in the deployed tree.
 
-> `dist/` is **not** gitignored, but it is also **not committed** — it sits
-> untracked (~43 MB of build output). If the repo is deployed straight from
-> git, the build output will not be there and every request will 404 —
-> `/health` will still answer, which makes this fail in a confusing way.
+> **`dist/` is gitignored** (since 2026-09-06) — ~43 MB of regenerable build
+> output that would otherwise churn on every rebuild.
 >
-> So decide deliberately: build on the host, or commit `dist/` and accept
-> ~40 MB of binary churn per rebuild. An earlier revision of this page claimed
-> `dist/` was gitignored; that was wrong.
+> So a deploy straight from git has **no build output**: every asset request
+> 404s while `/health` still answers, which fails in a confusing way. Either
+> build on the host as part of the deploy, or ship `dist/` out of band.
 
 **itch.io** — upload `dist/godot_web_rpg_itch.zip` as an HTML project, tick
 "play in browser", viewport 1024×576. Here itch serves the files and
