@@ -13,6 +13,12 @@ module edge).
 environment variable (`:17`) — which is how the test suite gets an isolated
 database.
 
+**`server/data/` is gitignored** (since 2026-09-06). It was briefly tracked,
+which churned a binary blob into history on every play session. `db.js:12-15`
+recreates the directory on startup, so a fresh clone works — but this is **live
+player data, not a fixture**: accounts, characters and inventory live here and
+nothing else backs it up.
+
 Three tables, created idempotently at import time (`:21-62`):
 
 | Table | Key columns |

@@ -11,6 +11,11 @@ dist/
 node_modules/
 server/node_modules/
 
+# Runtime SQLite database (accounts, characters, inventory).
+# db.js recreates server/data/ on startup, so a fresh clone is fine.
+# This is live player data, NOT a fixture — back it up separately.
+server/data/
+
 # OS
 Thumbs.db
 .DS_Store
