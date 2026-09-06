@@ -9,10 +9,9 @@ Node.js WebSocket server + SQLite.
 ## Design (proposals, not implemented)
 
 `wiki/design/` holds the **Tanah Melayu (Zaman Melaka)** plan — setting, four
-classes, bestiary. None of it is built. Start at
-[design/index.md](design/index.md), and read
-[design/open-questions.md](design/open-questions.md) before committing to any
-of it.
+classes, bestiary. **None of it is built.** Start at
+[design/index.md](design/index.md); the reasoning behind every design call is
+in [design/decisions.md](design/decisions.md).
 
 ## Start here
 

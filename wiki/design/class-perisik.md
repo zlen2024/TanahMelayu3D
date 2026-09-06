@@ -1,4 +1,4 @@
-# Jagat — STATUS: PLAN
+# Perisik — STATUS: PLAN
 
 > *"Bayang tak berdarah, tetapi belati tak pernah pulang lapar."*
 
@@ -33,7 +33,7 @@ movement speed.
 
 ## The naming question
 
-**"Jagat" reads oddly for this archetype.** In Malay (via Sanskrit) *jagat*
+**"Perisik" reads oddly for this archetype.** In Malay (via Sanskrit) *perisik*
 means *world / universe* — it carries scale and totality, not concealment.
 It is a striking word, but it points away from what the class does.
 
@@ -85,10 +85,10 @@ status effects with duration, tick, stacking rules and sync.
   invisibility. Avoids rendering and sync work entirely.
 
 Ordering note: **build the status-effect system first.** Bleed is needed by
-Jagat, the Pawang's Santau, and at least three bestiary entries. It is the
+Perisik, the Pawang's Santau, and at least three bestiary entries. It is the
 single highest-leverage system in this whole plan.
 
 ## Related
 
-- [open-questions.md](open-questions.md) — Q1, Q6 (facing/backstab), Q11 (PvP)
+- [decisions.md](decisions.md) — D1 (Semangat), D6 (facing), D11 (PvP shelved)
 - [../pages/wire-protocol.md](../pages/wire-protocol.md) — why facing is not transmitted

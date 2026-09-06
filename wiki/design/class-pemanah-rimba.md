@@ -66,7 +66,7 @@ armed traps. Nothing exists; projectiles are transient and free themselves on
 hit (`projectile.gd:51`). Needs a hazard entity, ownership, duration, and sync.
 
 Note the trap is also a *stealth* object — hidden until triggered — which
-brushes against the same visibility questions as [class-jagat.md](class-jagat.md).
+brushes against the same visibility questions as [class-perisik.md](class-perisik.md).
 
 **4. Ammo types.** The brief implies distinct arrow types. The current model has
 one projectile scene with `@export` fields
@@ -82,7 +82,7 @@ limits and piercing shots.
 - **Petua Pemburu** as the focus-not-time-slow version above: hold to slow
   *yourself*, tighten aim, build toward a guaranteed crit. No engine changes.
 - **Damak Getah Ipoh** — a slow debuff on hit; reuses the same status system as
-  Jagat's bleed.
+  Perisik's bleed.
 - **Ranjau Buluh Pasak** as the first ground hazard: a static `Area2D` in a
   `hazards` group that applies the shared DoT. Simpler than burning oil because
   it is a single trigger, and it proves the hazard pattern.
@@ -91,5 +91,5 @@ limits and piercing shots.
 
 ## Related
 
-- [open-questions.md](open-questions.md) — Q1, Q4 (time dilation), Q12 (weak points)
+- [decisions.md](decisions.md) — D1 (Semangat), D4 (focus, not time-slow), D12 (weak points)
 - [../pages/archer-class.md](../pages/archer-class.md) · [../pages/projectile.md](../pages/projectile.md)

@@ -75,5 +75,5 @@ without it may just be the current warrior in better clothes.
 
 ## Related
 
-- [open-questions.md](open-questions.md) — Q1 (resources), Q2 (parry), Q3 (posture)
+- [decisions.md](decisions.md) — D1 (Semangat), D2 (Tangkis), D3 (stagger)
 - [../pages/warrior-class.md](../pages/warrior-class.md) — what exists today

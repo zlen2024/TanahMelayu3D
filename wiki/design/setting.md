@@ -43,10 +43,10 @@ Three tiers, and the brief is right that this should drive more than flavour:
 | **Orang Istana** (Bangsawan) | court nobility | patrons and threats; wield law and favour, rarely violence directly |
 | **Hulubalang** | warriors sworn to a lord | the player's likely social position, or the thing they are cast out of |
 
-**This is a systems opportunity, not just backstory.** A standing question in
-[open-questions.md](open-questions.md): should social tier be a *mechanic* —
-who talks to you, which districts admit you, whose protection you carry — or
-purely narrative colour? The brief does not say, and it changes a lot.
+**Decided (D10): social tier is narrative, not mechanical, for the Lv1–20
+scope.** A reputation system — who talks to you, which districts admit you — is
+a good idea and a large one; it is out of scope here. The tiers still do heavy
+lifting in the story frame below.
 
 ## The supernatural: jin, saka, santau
 
@@ -68,12 +68,12 @@ the unseen. The brief already shows awareness of this — the Pawang's line
 careful work, positioning the class as transactional with the land rather than
 in service to the devil.
 
-That instinct is worth making an explicit rule rather than leaving to
-individual writing sessions. See [open-questions.md](open-questions.md) Q9 —
-it affects the Pawang class most, and it affects whether the game is
-comfortable to release to a Malaysian audience.
+That instinct is now a **written five-point rule** — see
+[decisions.md](decisions.md) D9. It is a constraint with teeth: it rules out
+certain skill framings up front, which is cheaper than finding them in review,
+and it is what lets the game use this material seriously rather than gingerly.
 
-## Story frame — **not yet specified**
+## Story frame — **adopted** (D10)
 
 The brief covers world, classes and enemies. It does **not** yet answer:
 
@@ -86,7 +86,7 @@ The brief covers world, classes and enemies. It does **not** yet answer:
 - **Is there an antagonist above them?** The two-track split (human/jin)
   suggests a convergence later. Nothing states it.
 
-A proposal, offered to be argued with rather than accepted:
+Adopted as the working frame ([decisions.md](decisions.md) D10):
 
 > The player is a **hulubalang without a lord** — sworn service ended badly, by
 > death or disgrace. Melaka's prosperity has no place for a warrior with no
@@ -107,5 +107,5 @@ to preserve, which makes this cheap narratively and expensive artistically.
 
 ## Related
 
-- [open-questions.md](open-questions.md) — Q8 (art direction), Q9 (religious material), Q10 (story)
+- [decisions.md](decisions.md) — D8 (art), D9 (the rule), D10 (story)
 - [bestiary.md](bestiary.md) · [index.md](index.md)

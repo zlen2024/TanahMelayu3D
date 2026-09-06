@@ -8,7 +8,9 @@
 > fact, the whole wiki stops being trustworthy.
 
 Drafted 2026-09-06 from the *Dokumen Reka Bentuk Game: Tanah Melayu (Zaman
-Melaka)* brief.
+Melaka)* brief. **All open questions were resolved the same day** — see
+[decisions.md](decisions.md). The class pages still describe the brief's
+original fantasy; where a decision changed something, the decision wins.
 
 ## Contents
 
@@ -16,11 +18,11 @@ Melaka)* brief.
 |---|---|
 | [setting.md](setting.md) | Era, place, social strata, tone, story frame |
 | [class-pendekar.md](class-pendekar.md) | Warrior / bruiser — Semangat Waja |
-| [class-jagat.md](class-jagat.md) | Assassin — Langkah Halimunan |
+| [class-perisik.md](class-perisik.md) | Assassin — Langkah Halimunan |
 | [class-pawang.md](class-pawang.md) | Occultist — Nafs & sacrifice |
 | [class-pemanah-rimba.md](class-pemanah-rimba.md) | Marksman — Petua Pemburu |
 | [bestiary.md](bestiary.md) | Enemies Lv1–19, two Lv20 bosses |
-| [open-questions.md](open-questions.md) | **Read this one.** Unresolved decisions and cost |
+| [decisions.md](decisions.md) | **Read this one.** All 14 forks, decided, with reasoning |
 
 ## What this replaces
 
@@ -36,7 +38,7 @@ not, and that is the part worth deciding carefully.
 | Brief asks for | Today | Cost |
 |---|---|---|
 | 4 classes | 3 (`warrior`/`mage`/`archer`) | Moderate — new class touches 6 places |
-| 4 **distinct** class resources | 1 shared energy bar + stamina | **Large** — see [open-questions.md](open-questions.md) Q1 |
+| 4 **distinct** class resources | 1 shared energy bar + stamina | **Large** — see [decisions.md](decisions.md) Q1 |
 | Perfect parry (Pendekar core loop) | No block or parry at all | **Large** — new combat verb |
 | Posture / stagger damage | HP + a boolean stun flag | **Large** — second health bar on every entity |
 | Stealth + backstab | No stealth; facing is `flip_h` only | **Large** — needs real angular facing |

@@ -42,7 +42,7 @@ is illusory.
 ## Systems required
 
 **1. DoT and debuff.** Santau Angin needs damage-over-time *and* a stat debuff
-with duration. Same system Jagat's bleed needs — build once.
+with duration. Same system Perisik's bleed needs — build once.
 
 **2. Charm / AI redirection.** `Pukau Sendeng` turning an enemy on its allies
 means monsters need to be able to target *monsters*. `_find_nearest_player()`
@@ -75,7 +75,7 @@ runtime spawning.
 
 - **Nafs** as the existing energy bar renamed, with **Korban** as an optional
   HP cost on two skills. This is the one class whose resource ships almost free.
-- **Santau Angin** on the shared DoT system (build it for Jagat first).
+- **Santau Angin** on the shared DoT system (build it for Perisik first).
 - **Pukau Sendeng** as pure stun initially — `apply_stun()` already exists
   (`entity.gd:69`). The "attack their allies" half waits for monster factions.
 - **Seru Bayang Mayat** deferred until stable monster IDs land. A cheap stand-in
@@ -93,9 +93,9 @@ not a fantasy spell school.
 The brief's own framing is the right instinct: transactional with the land,
 explicitly **not** in service to the devil. Worth turning that instinct into a
 written rule the whole team writes against, rather than re-deciding per skill.
-See [open-questions.md](open-questions.md) Q9.
+See [decisions.md](decisions.md) Q9.
 
 ## Related
 
-- [open-questions.md](open-questions.md) — Q1, Q5 (minions), Q9 (sensitivity)
+- [decisions.md](decisions.md) — D1 (Semangat), D5 (monster IDs), D9 (the rule)
 - [../pages/mage-class.md](../pages/mage-class.md) · [../pages/known-gaps.md](../pages/known-gaps.md) G4

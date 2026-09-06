@@ -43,7 +43,7 @@ That is a deliberate teaching order and it should be preserved.
 
 **Pelesit Bangkai drains "Nafs/Semangat"** — that assumes every class has a
 drainable class resource. If the resources diverge per class
-([open-questions.md](open-questions.md) Q1), what does this drain from a Jagat
+([decisions.md](decisions.md) Q1), what does this drain from a Perisik
 whose resource is a stealth state rather than a bar?
 
 ## Level 20 bosses
@@ -120,5 +120,5 @@ land before the bestiary does.
 
 ## Related
 
-- [open-questions.md](open-questions.md) — Q2, Q3, Q5, Q13, Q14
+- [decisions.md](decisions.md) — D2, D3, D5, D13, D14
 - [../pages/monster.md](../pages/monster.md) · [../pages/terrain.md](../pages/terrain.md)
