@@ -82,6 +82,24 @@ This is the one place in the repo with a third-party Python dependency
 (`PIL`), and there is no `requirements.txt` — running it needs
 `pip install Pillow` first.
 
+## `generate_tm_sprites.py`
+
+The four Tanah Melayu class sprites — Pendekar, Perisik, Pawang, Pemanah Rimba
+— plus their `SpriteFrames` and two preview images.
+
+Kept separate from `generate_sprites.py` because it is a different art
+direction, not a variant of the placeholder set. Frame layout matches
+(6 frames, `[idle x2, walk x4]`), so the output drops into `AnimatedSprite2D`
+with no new code.
+
+**Nothing in the game loads these yet** — see
+[../design/character-art.md](../design/character-art.md).
+
+Two things worth knowing before editing it: `ImageDraw` *replaces* alpha rather
+than blending, so any preview compositing onto an opaque background must draw
+to a transparent layer and `alpha_composite`; and weapons need an explicit
+shoulder-to-hand limb or they read as floating.
+
 ## `generate_sfx.py`
 
 Synthesises the five `.wav` files in `assets/sounds/` using **only the

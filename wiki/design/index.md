@@ -22,6 +22,7 @@ original fantasy; where a decision changed something, the decision wins.
 | [class-pawang.md](class-pawang.md) | Occultist — Nafs & sacrifice |
 | [class-pemanah-rimba.md](class-pemanah-rimba.md) | Marksman — Petua Pemburu |
 | [bestiary.md](bestiary.md) | Enemies Lv1–19, two Lv20 bosses |
+| [character-art.md](character-art.md) | Class sprites — generated, not yet wired in |
 | [decisions.md](decisions.md) | **Read this one.** All 14 forks, decided, with reasoning |
 
 ## What this replaces
