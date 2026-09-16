@@ -1,8 +1,9 @@
 # Character Art — STATUS: PLAN (art exists, not wired into the game)
 
-Four playable classes and the first five bestiary creatures. Rebuilt at
-**48x48** on 2026-09-16 after reference review — 32px could not hold the
-shading, ragged hems and hair mass the folklore designs need.
+**The full visual set: 4 classes, 10 bestiary commons, 2 bosses.** Rebuilt at
+48x48 on 2026-09-16 after reference review — 32px could not hold the shading,
+ragged hems and hair mass the folklore designs need. **Bosses are 64x64**, so
+they read as bosses by size before any detail lands.
 
 **The sprites and `SpriteFrames` exist on disk but nothing loads them.** The
 game still ships the old blue/red/green knights. Swapping them in is a separate
@@ -13,15 +14,33 @@ worth rebuilding scenes for.
 
 | Thing | Path |
 |---|---|
-| Generator | `tools/generate_tm_sprites.py` |
+| Palette, helpers, render infra | `tools/tm_art.py` |
+| Drawing code | `tools/generate_tm_sprites.py` |
 | Frame strips | `assets/sprites/tm/{pendekar,perisik,pawang,pemanah}_sheet.png` |
 | SpriteFrames | `assets/spriteframes/tm/*.tres` |
-| Lineups | `assets/sprites/tm/_classes.png`, `_creatures.png` |
-| **Walk animations** | `assets/sprites/tm/_classes_walk.gif`, `_creatures_walk.gif` |
+| Lineups | `_classes.png`, `_manusia.png`, `_jin.png`, `_bosses.png` |
+| **Walk animations** | `_classes_walk.gif`, `_manusia_walk.gif`, `_jin_walk.gif`, `_bosses_walk.gif` |
 
-Creatures drawn so far: Penyamun Laluan, Jin Tanah, Toyol Belaan, Hantu Jerut,
-Pelesit Bangkai. Five of the bestiary's ten commons; the Lv19 elites and both
-Lv20 bosses are not started.
+The generator was split in two once the bestiary arrived: `tm_art.py` holds the
+palette, drawing helpers and render infrastructure, `generate_tm_sprites.py` is
+pure drawing code.
+
+## The set
+
+**Manusia track** — escalation is carried by silhouette, not just stats:
+
+| Lv | Who | Silhouette read |
+|---|---|---|
+| 1 | Penyamun Laluan | small, rusted parang |
+| 5 | Pencuri Saku | smallest; cap and satchel say thief, not fighter |
+| 10 | Pemungut Ufti | **widest common**; mass plus a studded club |
+| 15 | Pelontar Minyak Api | the raised flame is the whole read |
+| 19 | Kepala Begal | twin blades held wide; better cloth than the grunts |
+
+**Jin track** — Jin Tanah, Toyol Belaan, Hantu Jerut, Pelesit Bangkai,
+Jin Belian Liar.
+
+**Bosses (64x64)** — Tok Begal Belah Retak, Saka Askar Perang Lama.
 
 Kept in a **separate module** from `generate_sprites.py`: this is a different
 art direction, not a variant of the placeholder set, and mixing them would make
@@ -115,11 +134,31 @@ background. Worth repeating that diagnostic before trusting any lineup:
   onto an opaque background must go through a transparent layer, and weapons
   need an explicit shoulder-to-hand limb or they read as floating.
 
+## Second pass fixes
+
+Three sprites failed on first render and were reworked:
+
+- **Jin Belian read as a slug**, not a boar. The body and head ellipses merged
+  and the bristles floated above the back. Rebuilt as a true quadruped: four
+  legs, a barrel body heaviest at the shoulder, a bristle ridge sitting *on*
+  the back, and a distinct snout with tusks curving up out of the jaw.
+- **Tok Begal was a brown rectangle with a face.** A straight box torso gives
+  no silhouette, so it now tapers from heavy shoulder caps to the waist, with a
+  neck so head and torso are not one block.
+- **The Saka's stoop did not read** — upright at that height it was just a tall
+  man. The whole upper body is now offset forward of the feet (`lean`), with
+  the legs trailing behind it.
+
+It also **clipped the frame edge**: the boar's tusks ran past 48px. Worth
+checking programmatically rather than by eye — a few lines reading the alpha of
+column 0 and column 47 catches it instantly.
+
 ## Known rough edges
 
 - The Pendekar's tengkolok peak still reads a little like a cone. Distinctive,
   but not quite a folded cloth.
-- The Toyol's arms are thin sticks against a bulky body.
+- Tok Begal's hair is a flat block, and his head still sits close to the torso.
+- The Saka's legs are nearly invisible under the robe hem.
 - No attack or death frames — only idle and walk.
 - Still no directional frames; facing remains `flip_h`
   ([decisions.md](decisions.md) D6).
@@ -129,10 +168,12 @@ background. Worth repeating that diagnostic before trusting any lineup:
 
 ## Next
 
-1. Enemy sprites — the bestiary's ten commons plus two bosses, same palette.
-2. Attack frames, once [decisions.md](decisions.md) D2 (Tangkis) settles what
-   the animations must sync with.
-3. Wire into the scenes — after class systems, not before.
+1. Attack and death frames, once [decisions.md](decisions.md) D2 (Tangkis)
+   settles what the animations must sync with.
+2. Directional frames, which need D6 (real facing) first.
+3. Wire into the scenes — after class systems, not before. Note the sprites are
+   48x48 and 64x64 against the 32x32 the scenes assume, so this means revisiting
+   collision shapes, attack-area offsets and nameplate positions.
 
 ## Related
 
