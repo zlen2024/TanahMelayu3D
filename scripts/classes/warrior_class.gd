@@ -23,6 +23,9 @@ func execute_basic_attack(player: CharacterBody2D) -> void:
 
 func execute_charged_attack(player: CharacterBody2D) -> void:
 	player.play_slash_effect()
+	var fx = player.get_node_or_null("CombatFX")
+	if fx and fx.has_method("burst"):
+		fx.burst(Vector2.ZERO, Color("ffd166"), 70.0, true)
 	SoundManager.play("slash")
 	player.show_notification("HEAVY CLEAVE!", Color.ORANGE)
 	var dmg = int(player.attack_damage * 1.8)

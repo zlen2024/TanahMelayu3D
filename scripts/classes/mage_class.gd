@@ -10,6 +10,7 @@ const BASIC_BOLT_RANGE: float = 330.0
 func execute_basic_attack(player: CharacterBody2D) -> void:
 	# No play_slash_effect(): that is the warrior's melee swing.
 	SoundManager.play("slash")
+	player.show_notification("API SAKTI", Color("8ee7ff"))
 	var dir := aim_dir(player)
 	player.face_direction(dir)
 	NetworkManager._spawn_projectile(
@@ -66,6 +67,9 @@ func execute_skill(player: CharacterBody2D, idx: int) -> bool:
 			player.emit_signal("skill_cooldown_started", 2, 4.0)
 			SoundManager.play("slash")
 			player.play_slash_effect()
+			var fx = player.get_node_or_null("CombatFX")
+			if fx and fx.has_method("burst"):
+				fx.burst(Vector2.ZERO, Color("9ddcff"), 95.0, true)
 			player.damage_enemies_in_radius(90, 22 + int(GameState.stat_int * 2.5))
 			return true
 	elif idx == 3 and player.skill3_cd <= 0:

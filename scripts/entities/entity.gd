@@ -81,8 +81,20 @@ func apply_stun(duration: float) -> void:
 
 func play_damage_feedback(amount: int) -> void:
 	SoundManager.play("hit")
+	var fx = get_node_or_null("CombatFX")
+	if fx and fx.has_method("burst"):
+		fx.burst(Vector2.ZERO, Color("ffb36b"), 22.0 if amount < 40 else 30.0, amount >= 60)
 	if entity_sprite:
+		var facing_left := false
+		if entity_sprite is AnimatedSprite2D:
+			facing_left = entity_sprite.flip_h
 		var tween = create_tween()
+		tween.set_parallel(true)
+		tween.tween_property(self, "position", position + Vector2(-4 if not facing_left else 4, 0), 0.04)
+		tween.tween_property(entity_sprite, "scale", Vector2(1.14, 0.88), 0.04)
+		tween.chain().tween_property(self, "position", position, 0.10)
+		tween.chain().tween_property(entity_sprite, "scale", Vector2.ONE, 0.10)
+		tween.set_parallel(false)
 		tween.tween_property(entity_sprite, "modulate", Color(2.5, 0.3, 0.3), 0.08)
 		tween.tween_property(entity_sprite, "modulate", Color.WHITE if not is_stunned else Color(1.4, 1.4, 0.4), 0.15)
 	var parent_node = get_parent() if get_parent() else self

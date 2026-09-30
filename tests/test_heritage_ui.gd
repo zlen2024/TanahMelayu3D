@@ -29,6 +29,8 @@ func _ready():
 	check(GameState.hero_class == "archer", "Selected class reaches gameplay")
 	var hero = main.get_node("World/Players").get_child(0)
 	check(hero.sprite.sprite_frames.resource_path.ends_with("tm/pemanah.tres"), "Pemanah sprite is used in game")
+	check(is_instance_valid(hero.get_node_or_null("CombatFX")), "Player has the combat impact renderer")
+	check(is_instance_valid(main.get_node("World/Monsters").get_child(0).get_node_or_null("CombatFX")), "Enemies have the combat impact renderer")
 	var hud = main.get_node("HUD")
 	check(is_instance_valid(hud.local_player_node), "HUD binds to spawned player")
 	hero.skill1_cd = 2.0
@@ -37,6 +39,11 @@ func _ready():
 	hero.skill1_cd = 0.0
 	hud._process(0.01)
 	check(not hud.skill1_btn.disabled and "Tiga Panah" in hud.skill1_btn.text, "Skill becomes ready after cooldown")
+	hero._play_attack_windup(0.1)
+	hero.play_slash_effect()
+	check(hero.slash_sprite.visible, "Melee slash trail is visible during an attack")
+	hero.get_node("CombatFX").burst(Vector2.ZERO, Color.WHITE, 20.0)
+	check(hero.get_node("CombatFX").bursts.size() > 0, "Impact burst is emitted on contact")
 	check(main.get_node("World/Kampung").get_child_count() == 20, "Kampung landmarks exist")
 	hud.stats_panel.set_open(true)
 	hud.inventory_ui.set_open(true)

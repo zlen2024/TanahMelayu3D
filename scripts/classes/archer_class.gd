@@ -12,6 +12,7 @@ func execute_basic_attack(player: CharacterBody2D) -> void:
 	# No play_slash_effect() here: that is the warrior's melee sword swing and
 	# it made the archer look like it was meleeing as well as firing.
 	SoundManager.play("slash")
+	player.show_notification("AIM", Color("ffe39b"))
 	var dir := aim_dir(player)
 	player.face_direction(dir)
 	NetworkManager._spawn_projectile(

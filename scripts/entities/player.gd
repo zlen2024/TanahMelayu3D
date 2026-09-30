@@ -335,6 +335,7 @@ func set_network_transform(pos: Vector2, flip: bool):
 
 func _execute_basic_attack():
 	can_attack = false
+	_play_attack_windup(0.16)
 	if hero_strategy:
 		hero_strategy.execute_basic_attack(self)
 	var timer = get_tree().create_timer(attack_cooldown)
@@ -342,6 +343,7 @@ func _execute_basic_attack():
 
 func _execute_charged_attack():
 	can_attack = false
+	_play_attack_windup(0.24, true)
 	if hero_strategy:
 		hero_strategy.execute_charged_attack(self)
 	var timer = get_tree().create_timer(attack_cooldown * 1.5)
@@ -411,9 +413,26 @@ func show_notification(text: String, col: Color = Color.WHITE):
 func play_slash_effect():
 	slash_sprite.visible = true
 	slash_sprite.modulate = Color.WHITE
+	slash_sprite.scale = Vector2(0.65, 0.65)
+	slash_sprite.rotation = -0.45 if not sprite.flip_h else 0.45
+	var fx = get_node_or_null("CombatFX")
+	if fx and fx.has_method("burst"):
+		fx.burst(Vector2(18 if not sprite.flip_h else -18, -2), Color("ffe4a3"), 26.0)
 	var tween = create_tween()
-	tween.tween_property(slash_sprite, "modulate:a", 0.0, 0.15)
+	tween.set_parallel(true)
+	tween.tween_property(slash_sprite, "modulate:a", 0.0, 0.20)
+	tween.tween_property(slash_sprite, "scale", Vector2(1.35, 1.35), 0.12)
+	tween.tween_property(slash_sprite, "rotation", 0.45 if not sprite.flip_h else -0.45, 0.16)
+	tween.set_parallel(false)
 	tween.tween_callback(func(): slash_sprite.visible = false)
+
+func _play_attack_windup(duration: float, heavy: bool = false):
+	if is_dead: return
+	var kick := 1.0 if not heavy else 1.18
+	var tween := create_tween()
+	tween.tween_property(sprite, "scale", Vector2(0.88, 1.12) * kick, duration * 0.35)
+	tween.tween_property(sprite, "scale", Vector2(1.08, 0.94) * kick, duration * 0.25)
+	tween.tween_property(sprite, "scale", Vector2.ONE, duration * 0.40)
 
 func gain_xp(amount: int):
 	xp += amount

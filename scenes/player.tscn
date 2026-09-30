@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://c6player01"]
+[gd_scene load_steps=9 format=3 uid="uid://c6player01"]
 
 [ext_resource type="Script" path="res://scripts/entities/player.gd" id="1_play"]
 [ext_resource type="SpriteFrames" path="res://assets/spriteframes/player_blue.tres" id="2_frames"]
 [ext_resource type="Texture2D" path="res://assets/sprites/slash.png" id="3_slash"]
+[ext_resource type="Script" path="res://scripts/combat/combat_fx.gd" id="4_fx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pbody"]
 radius = 10.0
@@ -37,6 +38,10 @@ autoplay = "idle"
 visible = false
 position = Vector2(16, 0)
 texture = ExtResource("3_slash")
+
+[node name="CombatFX" type="Node2D" parent="."]
+z_index = 80
+script = ExtResource("4_fx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 6)
