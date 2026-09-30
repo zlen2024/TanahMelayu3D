@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cmain01scene"]
+[gd_scene load_steps=14 format=3 uid="uid://cmain01scene"]
 
 [ext_resource type="PackedScene" path="res://scenes/world.tscn" id="1_world"]
 [ext_resource type="Script" path="res://scripts/ui/hud.gd" id="2_hud"]
@@ -8,6 +8,10 @@
 [ext_resource type="Script" path="res://scripts/ui/inventory_ui.gd" id="6_inv"]
 [ext_resource type="Theme" path="res://assets/ui/rpg_theme.tres" id="7_theme"]
 [ext_resource type="Script" path="res://scripts/ui/minimap.gd" id="8_minimap"]
+[ext_resource type="Shader" path="res://assets/ui/forest_atmosphere.gdshader" id="9_atmosphere"]
+
+[sub_resource type="ShaderMaterial" id="AtmosphereMaterial"]
+shader = ExtResource("9_atmosphere")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hpfill"]
 bg_color = Color(0.85, 0.15, 0.15, 1)
@@ -34,7 +38,20 @@ corner_radius_bottom_left = 3
 
 [node name="World" parent="." instance=ExtResource("1_world")]
 
+[node name="Atmosphere" type="CanvasLayer" parent="."]
+layer = 1
+
+[node name="Vignette" type="ColorRect" parent="Atmosphere"]
+material = SubResource("AtmosphereMaterial")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
 [node name="HUD" type="CanvasLayer" parent="."]
+layer = 2
 script = ExtResource("2_hud")
 
 [node name="TopLeft" type="Control" parent="HUD"]
@@ -173,9 +190,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -160.0
-offset_top = -78.0
-offset_right = 160.0
+offset_left = -260.0
+offset_top = -94.0
+offset_right = 260.0
 offset_bottom = -38.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -289,7 +306,7 @@ theme_override_constants/separation = 8
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.85, 0.3, 1)
 theme_override_font_sizes/font_size = 22
-text = "Hero Attributes"
+text = "Ilmu / Attributes"
 horizontal_alignment = 1
 
 [node name="ClassLabel" type="Label" parent="HUD/StatsPanel/VBox"]
@@ -415,7 +432,7 @@ theme_override_constants/separation = 6
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.85, 0.3, 1)
 theme_override_font_sizes/font_size = 22
-text = "Hero's Bag"
+text = "Bekal / Inventory"
 horizontal_alignment = 1
 
 [node name="HSeparator" type="HSeparator" parent="HUD/InventoryUI/VBox"]
@@ -449,104 +466,3 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("4_lobby")
-
-[node name="ColorRect" type="ColorRect" parent="LobbyLayer/LobbyUI"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.04, 0.06, 0.08, 0.88)
-
-[node name="Panel" type="PanelContainer" parent="LobbyLayer/LobbyUI"]
-custom_minimum_size = Vector2(380, 400)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -190.0
-offset_top = -200.0
-offset_right = 190.0
-offset_bottom = 200.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBox" type="VBoxContainer" parent="LobbyLayer/LobbyUI/Panel"]
-layout_mode = 2
-theme_override_constants/separation = 8
-
-[node name="Title" type="Label" parent="LobbyLayer/LobbyUI/Panel/VBox"]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 0.84, 0.2, 1)
-theme_override_font_sizes/font_size = 22
-text = "== GODOT WEB ONLINE RPG =="
-horizontal_alignment = 1
-
-[node name="Subtitle" type="Label" parent="LobbyLayer/LobbyUI/Panel/VBox"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
-text = "Warrior | Mage | Archer - Multiplayer POC"
-horizontal_alignment = 1
-
-[node name="HSeparator" type="HSeparator" parent="LobbyLayer/LobbyUI/Panel/VBox"]
-layout_mode = 2
-
-[node name="UserLabel" type="Label" parent="LobbyLayer/LobbyUI/Panel/VBox"]
-layout_mode = 2
-text = "Username:"
-
-[node name="UserInput" type="LineEdit" parent="LobbyLayer/LobbyUI/Panel/VBox"]
-layout_mode = 2
-placeholder_text = "Enter username"
-
-[node name="PassLabel" type="Label" parent="LobbyLayer/LobbyUI/Panel/VBox"]
-layout_mode = 2
-text = "Password:"
-
-[node name="PassInput" type="LineEdit" parent="LobbyLayer/LobbyUI/Panel/VBox"]
-layout_mode = 2
-secret = true
-placeholder_text = "Enter password"
-
-[node name="ClassLabel" type="Label" parent="LobbyLayer/LobbyUI/Panel/VBox"]
-layout_mode = 2
-text = "Hero Class (for Registration):"
-
-[node name="ClassOption" type="OptionButton" parent="LobbyLayer/LobbyUI/Panel/VBox"]
-layout_mode = 2
-
-[node name="ButtonsHBox" type="HBoxContainer" parent="LobbyLayer/LobbyUI/Panel/VBox"]
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="LoginBtn" type="Button" parent="LobbyLayer/LobbyUI/Panel/VBox/ButtonsHBox"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Login"
-
-[node name="RegisterBtn" type="Button" parent="LobbyLayer/LobbyUI/Panel/VBox/ButtonsHBox"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Register"
-
-[node name="GuestBtn" type="Button" parent="LobbyLayer/LobbyUI/Panel/VBox"]
-layout_mode = 2
-text = "Play as Guest (Solo)"
-
-[node name="AddressLabel" type="Label" parent="LobbyLayer/LobbyUI/Panel/VBox"]
-layout_mode = 2
-text = "Server Address:"
-
-[node name="AddressInput" type="LineEdit" parent="LobbyLayer/LobbyUI/Panel/VBox"]
-layout_mode = 2
-text = "ws://127.0.0.1:8080"
-placeholder_text = "ws://127.0.0.1:8080"
-
-[node name="StatusLabel" type="Label" parent="LobbyLayer/LobbyUI/Panel/VBox"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.6, 0.8, 1, 1)
-text = "Connecting to server..."
-horizontal_alignment = 1

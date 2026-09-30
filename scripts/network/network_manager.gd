@@ -133,8 +133,10 @@ func _broadcast_monsters_state():
 	var mob_data = []
 	for i in range(monsters.get_child_count()):
 		var mob = monsters.get_child(i)
+		# Stable id, not the child index: an index shifts under any runtime
+		# spawn and silently retargets every later monster.
 		mob_data.append({
-			"idx": i,
+			"id": mob.monster_id,
 			"pos": [round(mob.global_position.x), round(mob.global_position.y)],
 			"flip": mob.sprite.flip_h if mob.get("sprite") else false,
 			"hp": mob.current_health,
@@ -305,9 +307,8 @@ func _handle_network_message(msg: Dictionary):
 					var monsters = world.find_child("Monsters", true, false)
 					if monsters:
 						for m_info in m_data:
-							var idx = int(m_info.get("idx", -1))
-							if idx >= 0 and idx < monsters.get_child_count():
-								var mob = monsters.get_child(idx)
+							var mob = world.find_monster(int(m_info.get("id", -1)))
+							if mob:
 								if mob.has_method("apply_sync_state"):
 									var pos_arr = m_info.get("pos", [0, 0])
 									mob.apply_sync_state(
@@ -338,16 +339,14 @@ func _handle_network_message(msg: Dictionary):
 			GameState.emit_signal("chat_received", sender, text, is_sys)
 
 		"monster_hit":
-			var mob_idx = int(msg.get("mob_idx", -1))
+			var mob_id = int(msg.get("mob_id", -1))
 			var damage = int(msg.get("damage", 10))
 			var attacker = int(msg.get("attacker", 0))
 			var world = get_tree().root.find_child("World", true, false)
 			if world:
-				var monsters = world.find_child("Monsters", true, false)
-				if monsters and mob_idx >= 0 and mob_idx < monsters.get_child_count():
-					var mob = monsters.get_child(mob_idx)
-					if mob.has_method("apply_damage_from_network"):
-						mob.apply_damage_from_network(damage, attacker)
+				var mob = world.find_monster(mob_id)
+				if mob and mob.has_method("apply_damage_from_network"):
+					mob.apply_damage_from_network(damage, attacker)
 
 func spawn_player_node(peer_id: int, p_name: String, skin_idx: int, pos: Vector2, is_local_player: bool, p_level: int = 1, p_hp: int = 100, p_max_hp: int = 100) -> void:
 	var world = get_tree().root.find_child("World", true, false)

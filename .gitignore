@@ -1,5 +1,9 @@
 # Godot 4
 .godot/
+.local-runtime/
+artifacts/
+*-check.log
+game-tests.log
 bin/
 
 # Web export output (~43MB, regenerate with tools/build_web.ps1).

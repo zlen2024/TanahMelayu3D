@@ -193,9 +193,9 @@ function saveCharacter(userId, charData) {
     WHERE user_id = ?
   `);
   stmt.run(
-    charData.level, charData.xp,
-    charData.str, charData.vit, charData.agi, charData.int, charData.stat_points || 0,
-    charData.hp, charData.max_hp, charData.energy, charData.max_energy,
+    charData.level ?? 1, charData.xp ?? 0,
+    charData.str ?? 10, charData.vit ?? 10, charData.agi ?? 10, charData.int ?? 10, charData.stat_points ?? 0,
+    charData.hp ?? 100, charData.max_hp ?? 100, charData.energy ?? 50, charData.max_energy ?? 50,
     charData.pos ? charData.pos[0] : 0, charData.pos ? charData.pos[1] : 0,
     userId
   );
@@ -311,11 +311,16 @@ function allocateStat(userId, statName) {
 }
 
 function addInventoryItem(userId, item) {
+  const itemType = item.slot_type || item.type || 'item';
+  const itemName = item.name || 'Item';
+  const itemId = item.id || 'unknown';
+  const itemQty = item.quantity || 1;
+
   // If stackable (consumable/gold), try to find existing slot
-  if (item.type === 'consumable' || item.type === 'currency') {
-    const existing = db.prepare('SELECT * FROM inventory WHERE user_id = ? AND item_id = ?').get(userId, item.id);
+  if (itemType === 'consumable' || itemType === 'currency') {
+    const existing = db.prepare('SELECT * FROM inventory WHERE user_id = ? AND item_id = ?').get(userId, itemId);
     if (existing) {
-      db.prepare('UPDATE inventory SET quantity = quantity + ? WHERE id = ?').run(item.quantity || 1, existing.id);
+      db.prepare('UPDATE inventory SET quantity = quantity + ? WHERE id = ?').run(itemQty, existing.id);
       return getFullInventory(userId);
     }
   }
@@ -337,7 +342,7 @@ function addInventoryItem(userId, item) {
   db.prepare(`
     INSERT INTO inventory (user_id, slot_index, item_id, item_name, item_type, quantity)
     VALUES (?, ?, ?, ?, ?, ?)
-  `).run(userId, emptySlot, item.id, item.name, item.type, item.quantity || 1);
+  `).run(userId, emptySlot, itemId, itemName, itemType, itemQty);
 
   return getFullInventory(userId);
 }

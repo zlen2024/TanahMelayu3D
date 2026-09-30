@@ -24,9 +24,14 @@ func _ready() -> void:
 
 	# 1. Lobby — checks the Theme: panels, buttons, inputs, fonts.
 	await _shoot("01_lobby.png")
+	var lobby = main.get_node("LobbyLayer/LobbyUI")
+	lobby.account_box.show()
+	for _i in range(3): await get_tree().process_frame
+	await _shoot("01b_online.png")
+	lobby.account_box.hide()
 
 	# 2. Enter the world as a guest (no server needed).
-	NetworkManager.start_guest("warrior")
+	lobby._on_guest_pressed()
 	for _i in range(10):
 		await get_tree().process_frame
 
@@ -63,13 +68,19 @@ func _ready() -> void:
 	for _i in range(4):
 		await get_tree().process_frame
 	await _shoot("02_world_ysort.png")
+	hero.global_position = Vector2(-460, 280)
+	for _i in range(4): await get_tree().process_frame
+	await _shoot("02b_kampung.png")
 
 	# 4. Open both panels to check themed panels/buttons over the world.
 	var hud = get_tree().root.find_child("HUD", true, false)
 	if hud:
 		var stats = hud.find_child("StatsPanel", true, false)
 		var inv = hud.find_child("InventoryUI", true, false)
-		if stats: stats.set_open(true)
+		if stats:
+			stats.set_open(true)
+			for _i in range(3): await get_tree().process_frame
+			await _shoot("03a_attributes.png")
 		if inv: inv.set_open(true)
 	for _i in range(6):
 		await get_tree().process_frame

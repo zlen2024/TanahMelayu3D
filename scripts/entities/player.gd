@@ -124,9 +124,9 @@ func recalculate_stats():
 func _apply_skin(idx: int):
 	# Skins are whole SpriteFrames resources now, not single textures.
 	var skins = [
-		"res://assets/spriteframes/player_blue.tres",
-		"res://assets/spriteframes/player_red.tres",
-		"res://assets/spriteframes/player_green.tres"
+		"res://assets/spriteframes/tm/pendekar.tres",
+		"res://assets/spriteframes/tm/pawang.tres",
+		"res://assets/spriteframes/tm/pemanah.tres"
 	]
 	var path = skins[idx % skins.size()]
 	if ResourceLoader.exists(path):

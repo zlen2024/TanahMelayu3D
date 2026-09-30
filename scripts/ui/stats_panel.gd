@@ -55,7 +55,7 @@ func set_open(open: bool):
 		_refresh_ui()
 
 func _refresh_ui():
-	var c_name = GameState.hero_class.capitalize()
+	var c_name = preload("res://scripts/ui/heritage_style.gd").CLASS_NAMES.get(GameState.hero_class, "Pendekar")
 	class_label.text = "Class: %s  |  Unspent Points: %d" % [c_name, GameState.unspent_stat_points]
 	str_val.text = str(GameState.stat_str)
 	vit_val.text = str(GameState.stat_vit)

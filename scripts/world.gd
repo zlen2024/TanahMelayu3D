@@ -35,6 +35,15 @@ const MAP_SEED := 20260906
 
 enum Terrain { GRASS, DIRT, WATER, STONE, CLIFF }
 
+# Monster identity. World-spawned monsters take 1..N in spawn order, which is
+# deterministic (_spawn_initial_monsters walks a fixed list), so every client
+# derives the same IDs without syncing them.
+#
+# IDs at or above RUNTIME_ID_BASE are reserved for monsters spawned mid-match
+# -- summons, wave spawns -- which cannot be derived and must be allocated by
+# the host and carried in the spawn message. Nothing does that yet.
+const RUNTIME_ID_BASE := 10000
+
 const PROP_CLIFF := Vector2i(5, 4)
 
 # Wading: each tile of depth away from dry land costs another slice of speed.
@@ -42,6 +51,8 @@ const WATER_SLOW_PER_DEPTH := 0.16
 const WATER_SLOW_FLOOR := 0.35
 
 var _terrain: Dictionary = {}          # Vector2i -> Terrain
+var _next_monster_id: int = 1
+var _monsters_by_id: Dictionary = {}   # int -> Monster
 var _water_depth: Dictionary = {}      # Vector2i -> int, 1 = shoreline
 
 
@@ -332,6 +343,8 @@ func _on_match_started():
 		_spawn_initial_monsters()
 
 func _spawn_initial_monsters():
+	_next_monster_id = 1
+	_monsters_by_id.clear()
 	# Regular slimes
 	var spawn_points = [
 		Vector2(-200, -150),
@@ -350,8 +363,31 @@ func _spawn_initial_monsters():
 	# Boss King Slime in the north clearing
 	_create_monster(Vector2(0, -450), true)
 
-func _create_monster(pos: Vector2, is_king: bool):
+func _create_monster(pos: Vector2, is_king: bool) -> Node:
 	var m = monster_scene.instantiate()
 	m.global_position = pos
 	m.is_king_slime = is_king
+	m.monster_id = _next_monster_id
+	_next_monster_id += 1
 	monsters_container.add_child(m)
+	_monsters_by_id[m.monster_id] = m
+	return m
+
+
+# Resolve a monster by its stable id. Returns null if the id is unknown, which
+# callers must handle: a sync packet can name a monster this client has not
+# spawned.
+func find_monster(id: int) -> Node:
+	var m = _monsters_by_id.get(id)
+	if m != null and is_instance_valid(m) and not m.is_queued_for_deletion():
+		return m
+	if m != null:
+		_monsters_by_id.erase(id)
+	return null
+
+
+# Register a monster spawned outside _create_monster (a host-allocated runtime
+# spawn). Kept separate so the id can be supplied rather than derived.
+func register_monster(m: Node, id: int) -> void:
+	m.monster_id = id
+	_monsters_by_id[id] = m

@@ -10,6 +10,13 @@ const path = require('path');
 const { WebSocketServer, WebSocket } = require('ws');
 const db = require('./db');
 
+process.on('uncaughtException', (err) => {
+  console.error('[!] Uncaught Exception:', err);
+});
+process.on('unhandledRejection', (reason) => {
+  console.error('[!] Unhandled Rejection:', reason);
+});
+
 const PORT = process.env.PORT || 8080;
 const DIST_DIR = path.resolve(__dirname, '../dist');
 

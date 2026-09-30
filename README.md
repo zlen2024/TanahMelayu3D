@@ -1,116 +1,71 @@
-# ⚔️ Godot 4 Web Online RPG Proof-of-Concept (POC)
+# Hikayat: Tanah Melayu
 
-A high-performance, web-deployable 2D Top-Down Multiplayer Action RPG built with **Godot 4.3** and **GDScript 2.0**, featuring real-time multiplayer over **WebSockets**, synchronized combat, monster AI, leveling, and in-game chat.
+## Planned 3D edition
 
-Built to be **1-shot prompted**, tested locally in multiple browser tabs, and deployed to **itch.io**, **GitHub Pages**, and **Render** with zero friction.
+This branch preserves the playable 2D baseline and proposes the next 3D development phase. **No 3D implementation has started.** Read the [3D migration plan](docs/3d/MIGRATION_PLAN.md) and [Blender MCP asset pipeline](docs/3d/BLENDER_ASSET_PIPELINE.md).
 
----
+## Current playable game
 
-## 🌟 Key Features
+A Godot 4.3 top-down action RPG in a fictional, sultanate-inspired Tanah Melayu. The world blends a Malay kampung setting with folklore fantasy; it is not a historical reconstruction.
 
-- **Web Browser Native (WebAssembly)**:
-  - Runs in Chrome, Firefox, Edge, Safari, and mobile web browsers without plugins.
-  - **Single-Threaded Export (Godot 4.3)**: No need for Cross-Origin-Opener-Policy (`COOP`) or Cross-Origin-Embedder-Policy (`COEP`) headers. Runs on any static web host.
-- **WebSocket Multiplayer Architecture**:
-  - Uses Godot 4's `WebSocketMultiplayerPeer` (since web browsers do not support raw UDP/ENet sockets).
-  - High-Level Multiplayer RPC synchronization (`@rpc`) for smooth movement interpolation and zero-lag experience.
-- **2D Action RPG Mechanics**:
-  - 8-directional player movement with custom skins (Blue Knight, Red Paladin, Green Ranger).
-  - Overhead floating nameplate & real-time health bar.
-  - Melee sword slashes & ranged magic projectile attacks (`Shift + Space`).
-  - Slime monsters & King Slime Boss with server-authoritative wandering, aggro, pathing, and attacks.
-  - Floating combat text (damage numbers, heal popups, and level up fanfares).
-  - XP progression system with level up stats scaling (HP and Attack).
-  - Collectible loot drops (XP gems and Health potions).
-- **In-Game Systems**:
-  - Real-time multiplayer chat box with BBCode formatting and auto-scroll.
-  - In-game HUD: HP bar, XP progression bar, active player count, and connected heroes leaderboard.
-  - Integrated Lobby: Nickname customization, skin selector, server address input, Host, Join, and Dedicated Server modes.
-- **Backend & Cloud Deployment**:
-  - Ultra-lightweight standalone Node.js WebSocket relay server (`server/server.js`) ready for 1-click deployment on free cloud hosts (Render, Railway, Glitch).
-  - Built-in headless Godot server mode for self-hosted VPS environments.
+## The experience
 
----
+- Illustrated moonlit kampung entrance, emerald-and-gold interface, and bundled Cormorant Garamond display typography.
+- Select a **Pendekar** (melee), **Pawang** (magic), or **Pemanah** (ranged), with class portraits and descriptions.
+- Start solo without an account. Expand the online section to connect, sign in, or create an adventurer.
+- Explore timber stilt houses, palms, lantern-lit paths, and regions inhabited by Toyol, Pelesit, and the Jin Belian boss.
+- Read live skill cooldowns, health, energy, stamina, experience, and your current region in the HUD.
+- Open Ilmu (attributes) or Bekal (inventory); panels are mutually exclusive and release gameplay input when closed.
 
-## 🎮 Controls
+The existing combat, progression, inventory, terrain generation, and multiplayer protocol are retained. Internal class identifiers remain `warrior`, `mage`, and `archer` for save compatibility.
 
-| Action | Desktop Controls |
-|---|---|
-| **Move** | `W`, `A`, `S`, `D` or Arrow Keys |
-| **Melee Attack** | `Spacebar` or `Left Click` |
-| **Cast Spell** | `Shift` + `Spacebar` |
-| **Chat** | `Enter` (press to type, press again to broadcast) |
+## Play locally
 
----
+Open `project.godot` in Godot 4.3 and run the main scene. Choose **Begin your journey** for solo play.
 
-## 🚀 Quick Start (Local Development)
+For the browser version, serve the exported `dist/` directory:
 
-### 1. Install Dependencies
-Ensure you have **Node.js** (v18+) installed:
 ```powershell
-cd server
-npm install
-cd ..
+node server/serve_web.js
 ```
 
-### 2. Start the Unified Server
-Run the unified server (serves web files AND handles WebSockets on port 8080):
+Open http://localhost:8080. This static server supports solo play. For online play, install the backend dependencies and run the unified game server instead:
+
 ```powershell
+npm --prefix server install
 node server/server.js
 ```
-*(Single port: works with local browsers, VS Code dev tunnels, and cloud hosting!)*
 
-### 3. Play Multiplayer in Browser!
-1. Open your browser to: [http://localhost:8080](http://localhost:8080)
-2. Open a **second tab** or an **incognito window** to the same address.
-3. In Tab 1: Enter nickname "Knight_1", click **Join Realm**.
-4. In Tab 2: Enter nickname "Ranger_2", click **Join Realm**.
-5. Both players will appear in the world together! Move around, swing swords, chat in real-time, and defeat slimes!
+## Controls
 
----
+| Action | Key |
+|---|---|
+| Move | WASD / arrows |
+| Basic attack | Space / left click |
+| Dodge | Shift |
+| Class skills | 1 / 2 / 3 |
+| Quick items | Q / E (assign in inventory) |
+| Attributes / inventory | C / B |
+| Chat | Enter |
 
-## 📦 Building the Web Release
+## Build and verify
 
-To rebuild the Web HTML5/WASM bundle:
+Full web export (requires Godot 4.3 web export templates):
+
 ```powershell
-powershell -ExecutionPolicy Bypass -File tools/build_web.ps1
+./tools/build_web.ps1
 ```
-This will automatically:
-1. Ensure the Godot 4.3 CLI and export templates are installed.
-2. Compile and package the Web release into the `dist/` directory:
-   - `dist/index.html`
-   - `dist/index.js`
-   - `dist/index.wasm`
-   - `dist/index.pck`
-   - `dist/godot_web_rpg_itch.zip` (pre-packaged for itch.io)
 
----
+If the existing Godot 4.3 web runtime is already in `dist/`, the game pack can be regenerated with `--export-pack Web dist/index.pck`. Update `GODOT_CONFIG.fileSizes` in the HTML when refreshing a pack manually.
 
-## 🌐 Deploying to the Public Web
+```powershell
+./bin/Godot_v4.3-stable_win64_console.exe --headless --path . tests/test_runner.tscn
+./bin/Godot_v4.3-stable_win64_console.exe --headless --path . tests/test_heritage_ui.tscn
+./bin/Godot_v4.3-stable_win64_console.exe --path . tools/screenshot_harness.tscn -- --out=./artifacts/heritage
+```
 
-### Option A: Uploading to itch.io (HTML5 Game)
-1. Run `tools/build_web.ps1` to produce `dist/godot_web_rpg_itch.zip`.
-2. Go to [itch.io](https://itch.io) -> **Create new project**.
-3. Under **Kind of project**, choose **HTML**.
-4. Upload `godot_web_rpg_itch.zip` and check the checkbox **This file will be played in the browser**.
-5. Set Viewport dimensions: `1024` x `576`.
-6. Click **Save & View Page**!
+The gameplay suite contains 134 assertions. The additional interface suite checks class selection, offline entry, sprite selection, cooldown feedback, and modal input release. Screenshot capture requires a real renderer.
 
-### Option B: Hosting the WebSocket Backend for FREE on Render.com
-1. Fork or push this repository to GitHub.
-2. Go to [Render.com](https://render.com) and create a **New Web Service**.
-3. Connect your repository.
-4. Settings:
-   - **Root Directory**: `server`
-   - **Build Command**: `npm install`
-   - **Start Command**: `node server.js`
-5. Render provides a free HTTPS/WSS URL like:
-   `https://your-rpg-server.onrender.com`
-6. In your web game lobby, enter:
-   `wss://your-rpg-server.onrender.com`
-   *(Always use `wss://` on HTTPS sites)*
+## Art and typography
 
----
-
-## 🤖 1-Shot Prompting
-Want to recreate or extend this project using AI? Check out [`ONE_SHOT_PROMPT.md`](ONE_SHOT_PROMPT.md) for the master prompt specifications, architectural blueprints, and prompt engineering instructions.
+The kampung title illustration was generated for this project. Character sprite sources and generators are in `assets/sprites/tm/` and `tools/generate_tm_sprites.py`. Landmarks are deterministic Godot vector drawings. Cormorant Garamond is bundled under the SIL Open Font License; see `assets/fonts/OFL.txt`.

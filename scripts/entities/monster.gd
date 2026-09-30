@@ -9,6 +9,12 @@ const ItemDatabase = preload("res://scripts/items/item_database.gd")
 enum State { IDLE, CHASE, TELEGRAPH_WINDUP, ATTACK_STRIKE, RECOVERY, DEAD }
 enum MonsterType { GREEN_SLIME, RED_SLIME, KING_SLIME }
 
+# Stable network identity, assigned at spawn by world.gd. Monsters used to be
+# addressed by their index in the Monsters container, which meant any runtime
+# spawn shifted every later index and silently retargeted damage on other
+# clients. See wiki/pages/known-gaps.md G4.
+var monster_id: int = -1
+
 @export var monster_type: MonsterType = MonsterType.GREEN_SLIME
 @export var is_king_slime: bool = false
 @export var aggro_radius: float = 160.0
@@ -65,9 +71,9 @@ func _ready():
 		attack_radius = 95.0
 		defense = 12
 		windup_duration = 0.75
-		name_label.text = "King Slime [BOSS]"
+		name_label.text = "Jin Belian [BOSS]"
 		name_label.modulate = Color(1.0, 0.84, 0.0)
-		sprite.sprite_frames = preload("res://assets/spriteframes/slime_king.tres")
+		sprite.sprite_frames = preload("res://assets/spriteframes/tm/jin_belian.tres")
 	elif monster_type == MonsterType.RED_SLIME:
 		max_hp = 85
 		current_hp = 85
@@ -75,9 +81,9 @@ func _ready():
 		attack_radius = 140.0 # Ranged Spitter
 		defense = 6
 		windup_duration = 0.65
-		name_label.text = "Magma Slime [Lv.6]"
+		name_label.text = "Pelesit [Lv.6]"
 		name_label.modulate = Color(1.0, 0.4, 0.2)
-		sprite.modulate = Color(1.5, 0.4, 0.4)
+		sprite.sprite_frames = preload("res://assets/spriteframes/tm/pelesit.tres")
 	else:
 		max_hp = 60
 		current_hp = 60
@@ -85,7 +91,8 @@ func _ready():
 		attack_radius = 35.0
 		defense = 2
 		windup_duration = 0.55
-		name_label.text = "Forest Slime [Lv.2]"
+		name_label.text = "Toyol [Lv.2]"
+		sprite.sprite_frames = preload("res://assets/spriteframes/tm/toyol.tres")
 		
 	_update_hp_bar()
 
@@ -296,7 +303,7 @@ func take_damage(amount: int, attacker_peer_id: int = -1) -> int:
 		
 	NetworkManager.send_packet({
 		"type": "monster_hit",
-		"mob_idx": get_index(),
+		"mob_id": monster_id,
 		"damage": amount,
 		"attacker": attacker_peer_id
 	})

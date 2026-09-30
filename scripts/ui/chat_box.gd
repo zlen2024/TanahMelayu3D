@@ -17,7 +17,7 @@ func _ready():
 	tab_toggle_btn.pressed.connect(_on_tab_toggle_pressed)
 	
 	# Initial welcome in chat
-	chat_log.append_text("[color=#85c1e9][i]Welcome to the Realm! Press Enter or type below to chat.[/i][/color]\n")
+	chat_log.append_text("[color=#85c1e9][i]Selamat datang. The forest awaits. Press Enter to chat.[/i][/color]\n")
 	
 	# Lock gameplay WASD and attacks while typing in chat
 	message_input.focus_entered.connect(func(): GameState.set_ui_modal_open(true))

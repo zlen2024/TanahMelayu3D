@@ -1,5 +1,10 @@
 extends CanvasLayer
 
+const Heritage = preload("res://scripts/ui/heritage_style.gd")
+var skill_titles: Array[String] = []
+var region_label: Label
+var region_timer := 0.0
+
 # In-Game HUD: Displays HP, Energy, Stamina, XP, Leaderboard, Skill Bar, Hotbar, and Stats/Bag toggles.
 
 @onready var hp_bar: ProgressBar = $TopLeft/VBoxContainer/HBoxHP/HPBar
@@ -40,9 +45,16 @@ func _ready():
 	
 	_build_stamina_bar_ui()
 	_build_quick_slots_ui()
+	_apply_heritage_ui()
 	
 	stats_btn.pressed.connect(func(): stats_panel.toggle())
 	bag_btn.pressed.connect(func(): inventory_ui.toggle())
+	stats_panel.visibility_changed.connect(func():
+		if stats_panel.visible: inventory_ui.set_open(false)
+	)
+	inventory_ui.visibility_changed.connect(func():
+		if inventory_ui.visible: stats_panel.set_open(false)
+	)
 	
 	skill1_btn.pressed.connect(func(): if local_player_node: local_player_node._execute_skill(1))
 	skill2_btn.pressed.connect(func(): if local_player_node: local_player_node._execute_skill(2))
@@ -129,7 +141,7 @@ func update_stats(hp: int, max_hp: int, level: int, xp: int, xp_next: int):
 	xp_bar.value = xp
 	xp_label.text = "%d / %d XP" % [xp, xp_next]
 	
-	var c_name = GameState.hero_class.capitalize()
+	var c_name = Heritage.CLASS_NAMES.get(GameState.hero_class, "Pendekar")
 	level_label.text = "Level %d %s" % [level, c_name]
 
 func update_energy(curr: int, max_en: int):
@@ -166,23 +178,86 @@ func _on_quick_slots_updated(slots: Array):
 func _on_skill_cooldown(skill_idx: int, duration: float):
 	var btn = skill1_btn if skill_idx == 1 else (skill2_btn if skill_idx == 2 else skill3_btn)
 	btn.disabled = true
-	var timer = get_tree().create_timer(duration)
-	timer.timeout.connect(func(): btn.disabled = false)
+	btn.tooltip_text = "Recovering for %.1f seconds" % duration
 
 func _update_skill_labels():
 	var c = GameState.hero_class
 	if c == "mage":
-		skill1_btn.text = "[1] Fireball\n(15 MP)"
-		skill2_btn.text = "[2] Frost Nova\n(25 MP)"
-		skill3_btn.text = "[3] Mana Surge\n(10 MP)"
+		skill1_btn.text = "[1] Api Sakti\n15 energy"
+		skill2_btn.text = "[2] Embun Beku\n25 energy"
+		skill3_btn.text = "[3] Semangat\n10 energy"
 	elif c == "archer":
-		skill1_btn.text = "[1] Triple Shot\n(18 MP)"
-		skill2_btn.text = "[2] Tumble\n(15 MP)"
-		skill3_btn.text = "[3] Bandage\n(20 MP)"
+		skill1_btn.text = "[1] Tiga Panah\n18 energy"
+		skill2_btn.text = "[2] Elak\n15 energy"
+		skill3_btn.text = "[3] Balutan\n20 energy"
 	else:
-		skill1_btn.text = "[1] Charge\n(15 MP)"
-		skill2_btn.text = "[2] Whirlwind\n(22 MP)"
-		skill3_btn.text = "[3] Iron Will\n(20 MP)"
+		skill1_btn.text = "[1] Terjah\n15 energy"
+		skill2_btn.text = "[2] Putaran\n22 energy"
+		skill3_btn.text = "[3] Tekad Besi\n20 energy"
+	skill_titles = [skill1_btn.text, skill2_btn.text, skill3_btn.text]
+	var tips := ["Charge toward your target", "Strike surrounding foes", "Fortify your resolve"]
+	if c == "mage": tips = ["Launch a fireball", "Freeze nearby enemies", "Restore your magical strength"]
+	if c == "archer": tips = ["Fire three arrows", "Tumble out of danger", "Recover health"]
+	for i in range(3):
+		[skill1_btn, skill2_btn, skill3_btn][i].tooltip_text = tips[i]
+
+func _apply_heritage_ui():
+	$TopLeft.offset_left = 24
+	$TopLeft.offset_top = 24
+	$TopLeft.offset_right = 300
+	$TopLeft.offset_bottom = 198
+	var back := Panel.new()
+	back.position = Vector2(-8, -8)
+	back.size = Vector2(284, 178)
+	back.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	back.add_theme_stylebox_override("panel", Heritage.panel(Color(0.025, 0.065, 0.055, 0.94)))
+	$TopLeft.add_child(back)
+	$TopLeft.move_child(back, 0)
+	stats_btn.text = "Ilmu [C]"
+	bag_btn.text = "Bekal [B]"
+	for bar in [hp_bar, energy_bar, xp_bar, stamina_bar]:
+		bar.tooltip_text = "Health" if bar == hp_bar else ("Energy for skills" if bar == energy_bar else ("Experience" if bar == xp_bar else "Stamina for dodging"))
+	for btn in [skill1_btn, skill2_btn, skill3_btn]:
+		btn.custom_minimum_size = Vector2(116, 54)
+		btn.add_theme_font_size_override("font_size", 13)
+	region_label = Heritage.label("T A N A H   M E L A Y U\nSimpang Rimba", 16, Heritage.GOLD)
+	region_label.set_anchors_and_offsets_preset(Control.PRESET_CENTER_TOP)
+	region_label.offset_left = -180
+	region_label.offset_right = 180
+	region_label.offset_top = 22
+	region_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	region_label.add_theme_color_override("font_shadow_color", Color.BLACK)
+	region_label.add_theme_constant_override("shadow_offset_x", 1)
+	region_label.add_theme_constant_override("shadow_offset_y", 2)
+	add_child(region_label)
+	$ChatBox._set_minimized(true)
+	$ChatBox.offset_top = -260
+	$ChatBox.offset_bottom = -94
+	$ChatBox/TabToggleBtn.position.y = 140
+	$ChatBox/TabToggleBtn.pressed.connect(func(): $ChatBox/TabToggleBtn.position.y = 140 if $ChatBox.is_minimized else -25)
+	$ControlsHint.text = "WASD  Move    ·    SPACE  Attack    ·    SHIFT  Dodge    ·    1 / 2 / 3  Skills    ·    Q / E  Items    ·    ENTER  Chat"
+	$ControlsHint.add_theme_font_size_override("font_size", 12)
+	$ControlsHint.add_theme_color_override("font_color", Heritage.IVORY)
+	$ControlsHint.add_theme_color_override("font_shadow_color", Color.BLACK)
+	$ControlsHint.add_theme_constant_override("shadow_offset_y", 2)
+
+func _process(delta: float):
+	if not is_instance_valid(local_player_node): return
+	var cooldowns := [local_player_node.skill1_cd, local_player_node.skill2_cd, local_player_node.skill3_cd]
+	for i in range(3):
+		var btn: Button = [skill1_btn, skill2_btn, skill3_btn][i]
+		btn.disabled = cooldowns[i] > 0 or local_player_node.is_dead
+		if skill_titles.size() == 3:
+			btn.text = "%s\n%.1fs" % [skill_titles[i].split("\n")[0], cooldowns[i]] if cooldowns[i] > 0 else skill_titles[i]
+	region_timer -= delta
+	if region_timer <= 0:
+		region_timer = 0.5
+		var pos: Vector2 = local_player_node.global_position
+		var region := "Simpang Rimba"
+		if pos.y < -300: region = "Batu Purba · Jin Belian territory"
+		elif pos.x > 350 and pos.y > 220: region = "Tasik Sunyi"
+		elif absf(pos.x) > 330: region = "Kampung di Rimba"
+		region_label.text = "T A N A H   M E L A Y U\n" + region
 
 func _on_players_changed(_id = 0, _info = {}):
 	_refresh_player_list()
@@ -193,7 +268,7 @@ func _on_stat_changed(_id: int, _stat: String, _val: Variant):
 func _refresh_player_list():
 	player_list.clear()
 	var total_count = GameState.players.size()
-	online_count_label.text = "Players Online: %d" % max(1, total_count)
+	online_count_label.text = "Solo expedition" if NetworkManager.is_solo_mode else "Adventurers: %d" % total_count
 	
 	for pid in GameState.players:
 		var p_info = GameState.players[pid]

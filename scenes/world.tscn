@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://b5world01"]
+[gd_scene load_steps=8 format=3 uid="uid://b5world01"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_world"]
+[ext_resource type="Script" path="res://scripts/heritage_landmarks.gd" id="5_heritage"]
 [ext_resource type="Texture2D" path="res://assets/sprites/tile_wall.png" id="3_wall"]
 [ext_resource type="TileSet" path="res://assets/tilesets/terrain.tres" id="4_terrain"]
 
@@ -20,11 +21,17 @@ script = ExtResource("1_world")
 [node name="Map" type="Node2D" parent="."]
 y_sort_enabled = true
 
+[node name="Kampung" type="Node2D" parent="."]
+y_sort_enabled = true
+script = ExtResource("5_heritage")
+
 [node name="Ground" type="TileMapLayer" parent="Map"]
+modulate = Color(0.62, 0.77, 0.66, 1)
 z_index = -100
 tile_set = ExtResource("4_terrain")
 
 [node name="Detail" type="TileMapLayer" parent="Map"]
+modulate = Color(0.72, 0.85, 0.72, 1)
 z_index = -50
 tile_set = ExtResource("4_terrain")
 

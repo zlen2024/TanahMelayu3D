@@ -6,8 +6,8 @@ config_version=5
 
 [application]
 
-config/name="Godot Web Online RPG"
-config/description="A lightweight 2D Web-Deployable Online RPG POC in Godot 4"
+config/name="Hikayat: Tanah Melayu"
+config/description="A folklore adventure in the heart of Tanah Melayu"
 run/main_scene="res://scenes/main.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://assets/sprites/player.png"
@@ -20,11 +20,13 @@ NetworkManager="*res://scripts/network/network_manager.gd"
 
 [display]
 
-window/size/viewport_width=1024
-window/size/viewport_height=576
+window/size/viewport_width=1280
+window/size/viewport_height=720
 window/size/resizable=true
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+window/size/window_width_override=1280
+window/size/window_height_override=720
 
 [input]
 
